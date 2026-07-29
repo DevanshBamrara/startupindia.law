@@ -34,7 +34,7 @@ html {
   color: var(--color-ink);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
-  cursor: none; /* Controlled by custom cursor */
+  cursor: none;
 }
 
 body {
@@ -47,7 +47,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide default cursor on interactive elements */
 a, button, input, select, textarea, [role="button"] {
   cursor: none;
 }
@@ -108,7 +107,6 @@ a, button, input, select, textarea, [role="button"] {
   50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.15; }
 }
 
-/* Cursor Hover Expanded State */
 body.cursor-hover .custom-cursor-dot {
   width: 20px;
   height: 20px;
@@ -134,7 +132,7 @@ body.cursor-hover .custom-cursor-ring {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 80px 24px;
+  padding: 100px 24px;
   transition: background-color 1s ease;
 }
 
@@ -146,17 +144,16 @@ body.cursor-hover .custom-cursor-ring {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: calc(38vh - 100px); /* Aligned slightly above optical center */
+  padding-top: calc(38vh - 100px);
 }
 
 .bell-container {
-  max-width: 900px;
+  max-width: 950px;
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 800ms var(--ease-temple);
 }
 
 .bell-question {
@@ -166,19 +163,17 @@ body.cursor-hover .custom-cursor-ring {
   line-height: 1.3;
   letter-spacing: 0.02em;
   color: var(--color-ink);
-  margin-bottom: 140px; /* Generous breathing space down to vessel */
-  transition: transform 800ms var(--ease-temple), opacity 800ms var(--ease-temple);
+  margin-bottom: 140px;
 }
 
 .query-vessel-wrapper {
   width: 100%;
-  max-width: 580px;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Recessed Stone Query Basin */
 .query-vessel {
   width: 100%;
   min-height: 64px;
@@ -221,6 +216,7 @@ body.cursor-hover .custom-cursor-ring {
   font-size: 19px;
   color: var(--color-ink);
   margin-bottom: 16px;
+  line-height: 1.4;
 }
 
 .vessel-email-form {
@@ -284,13 +280,12 @@ body.cursor-hover .custom-cursor-ring {
   font-size: 18px;
 }
 
-/* Staggered Revealing Questions */
 .revealed-questions {
   width: 100%;
   margin-top: 36px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .question-line {
@@ -305,10 +300,9 @@ body.cursor-hover .custom-cursor-ring {
 }
 
 .question-line:hover, .question-line:focus {
-  background-color: rgba(245, 240, 232, 0.6);
+  background-color: rgba(245, 240, 232, 0.7);
 }
 
-/* Left Circle Ink Animation */
 .ink-circle {
   width: 12px;
   height: 12px;
@@ -326,13 +320,13 @@ body.cursor-hover .custom-cursor-ring {
 .question-text {
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--color-earth);
   letter-spacing: 0.01em;
 }
 
 /* ==========================================================================
-   FRAME 2: THE CORRIDOR — HORIZONTAL TRUST SCROLL
+   FRAME 2: THE CORRIDOR — TRUST PILLARS (8 PANELS)
    ========================================================================== */
 .frame-corridor {
   width: 100vw;
@@ -363,21 +357,20 @@ body.cursor-hover .custom-cursor-ring {
   height: 70vh;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Hide scrollbar Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar IE */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 0 10vw;
   gap: 40px;
   align-items: center;
 }
 
 .corridor-track::-webkit-scrollbar {
-  display: none; /* Hide scrollbar Chrome/Safari */
+  display: none;
 }
 
-/* Granite/Sandstone Panel */
 .corridor-panel {
   flex: 0 0 65vw;
-  max-width: 600px;
+  max-width: 620px;
   height: 75%;
   background-color: var(--bg-granite);
   border-radius: 12px;
@@ -391,15 +384,15 @@ body.cursor-hover .custom-cursor-ring {
   transition: transform 600ms var(--ease-temple), background-color 600ms ease;
 }
 
-/* Panel subtle micro-variations */
 .panel-1 { background-color: #F0EBE0; }
 .panel-2 { background-color: #EEE9DF; }
 .panel-3 { background-color: #F2EDE4; }
 .panel-4 { background-color: #EFEAE0; }
 .panel-5 { background-color: #EDE8DE; }
 .panel-6 { background-color: #F1ECE2; }
+.panel-7 { background-color: #EEE9E0; }
+.panel-8 { background-color: #F0ECE4; }
 
-/* Edge Vignette */
 .panel-vignette {
   position: absolute;
   inset: 0;
@@ -430,7 +423,7 @@ body.cursor-hover .custom-cursor-ring {
   color: var(--color-ink);
   letter-spacing: 0.05em;
   line-height: 1.5;
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); /* Embossed stone feel */
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .panel-subtext {
@@ -441,15 +434,14 @@ body.cursor-hover .custom-cursor-ring {
   letter-spacing: 0.05em;
 }
 
-/* Tally Mark Progress Bar */
 .corridor-progress {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   padding-bottom: 60px;
 }
 
 .tally-mark {
-  width: 24px;
+  width: 20px;
   height: 2px;
   background-color: var(--color-border);
   transition: background-color 400ms var(--ease-temple), width 400ms var(--ease-temple);
@@ -457,7 +449,7 @@ body.cursor-hover .custom-cursor-ring {
 
 .tally-mark.active {
   background-color: var(--color-copper);
-  width: 32px;
+  width: 28px;
 }
 
 /* ==========================================================================
@@ -482,7 +474,6 @@ body.cursor-hover .custom-cursor-ring {
   margin-bottom: 120px;
 }
 
-/* 3x2 Grid */
 .niches-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -500,7 +491,6 @@ body.cursor-hover .custom-cursor-ring {
   transition: box-shadow 600ms var(--ease-temple);
 }
 
-/* Diya Glow Effect on Hover */
 .diya-glow {
   position: absolute;
   inset: 0;
@@ -546,7 +536,7 @@ body.cursor-hover .custom-cursor-ring {
 }
 
 /* ==========================================================================
-   FRAME 4: THE GALLERY OF BEINGS — NOTABLE STARTUPS
+   FRAME 4: THE GALLERY OF BEINGS — 6 NOTABLE STARTUPS
    ========================================================================== */
 .frame-gallery {
   background-color: var(--bg-plaster);
@@ -567,12 +557,13 @@ body.cursor-hover .custom-cursor-ring {
   color: var(--color-copper);
   display: block;
   margin-bottom: 64px;
+  line-height: 1.5;
 }
 
-.vitrines-grid {
+.vitrines-grid.grid-6 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
 }
 
 .vitrine-card {
@@ -582,19 +573,18 @@ body.cursor-hover .custom-cursor-ring {
   text-align: center;
 }
 
-/* Museum Vitrine Styling */
 .vitrine-frame {
   width: 100%;
   border: 1px solid var(--color-border);
-  padding: 18px;
+  padding: 16px;
   background-color: var(--bg-plaster);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   box-shadow: 0px 4px 16px rgba(44, 36, 22, 0.02);
 }
 
 .vitrine-mat {
   background-color: #FAF8F5;
-  padding: 12px;
+  padding: 10px;
 }
 
 .vitrine-image-wrapper {
@@ -616,13 +606,30 @@ body.cursor-hover .custom-cursor-ring {
   filter: sepia(0.05) contrast(1);
 }
 
+.vitrine-name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
 .vitrine-caption {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--color-ink);
   line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.vitrine-stat {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--color-copper);
   margin-bottom: 12px;
+  display: block;
 }
 
 .vitrine-mystery-link {
@@ -635,14 +642,12 @@ body.cursor-hover .custom-cursor-ring {
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: color 300ms ease;
-  margin-top: 4px;
 }
 
 .vitrine-mystery-link:hover {
   color: var(--color-ink);
 }
 
-/* Breathing Drawer Reveal */
 .vitrine-drawer {
   width: 100%;
   margin-top: 16px;
@@ -668,7 +673,6 @@ body.cursor-hover .custom-cursor-ring {
 .drawer-form {
   display: flex;
   gap: 8px;
-  margin-bottom: 8px;
 }
 
 .drawer-form input {
@@ -696,16 +700,11 @@ body.cursor-hover .custom-cursor-ring {
   background-color: var(--color-ink);
 }
 
-.drawer-subnote {
-  font-size: 10px;
-  color: var(--color-copper);
-}
-
 /* ==========================================================================
    FRAME 5: THE WISDOM POOL — DATA AS KOAN
    ========================================================================== */
 .frame-wisdom {
-  background-color: var(--bg-dusk); /* Atmospheric dusk tone */
+  background-color: var(--bg-dusk);
   min-height: 100vh;
 }
 
@@ -751,14 +750,14 @@ body.cursor-hover .custom-cursor-ring {
 .wisdom-whisper {
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-copper);
   margin-top: 20px;
   letter-spacing: 0.08em;
 }
 
 /* ==========================================================================
-   FRAME 6: THE TREE & THE SEATED ONE — "OUR TIME HAS ARRIVED"
+   FRAME 6: THE PHILOSOPHY & THE NAME
    ========================================================================== */
 .frame-tree {
   background-color: var(--bg-dusk);
@@ -766,7 +765,7 @@ body.cursor-hover .custom-cursor-ring {
 }
 
 .tree-container {
-  max-width: 700px;
+  max-width: 750px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -789,7 +788,14 @@ body.cursor-hover .custom-cursor-ring {
   font-weight: 500;
   font-size: 36px;
   color: var(--color-ink);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.tree-philosophy-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .tree-subtext {
@@ -797,25 +803,52 @@ body.cursor-hover .custom-cursor-ring {
   font-weight: 300;
   font-size: 15px;
   color: var(--color-earth);
-  margin-bottom: 12px;
 }
 
 .tree-advocate {
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-copper);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
-/* Physical Pamphlet Element */
+.philosophy-toggle-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-copper);
+  margin-bottom: 40px;
+  transition: all 300ms ease;
+}
+
+.philosophy-toggle-btn:hover {
+  border-color: var(--color-copper);
+  color: var(--color-ink);
+}
+
+.philosophy-reveal-content {
+  background-color: var(--bg-basin);
+  border: 1px solid var(--color-border);
+  padding: 24px 32px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  max-width: 600px;
+  font-size: 14px;
+  color: var(--color-earth);
+  line-height: 1.6;
+}
+
 .pamphlet-card {
   background-color: var(--bg-basin);
   border: 1px solid var(--color-border);
   padding: 24px 36px;
   border-radius: 4px;
-  max-width: 500px;
-  box-shadow: 0px 12px 28px rgba(44, 36, 22, 0.07); /* Long afternoon shadow */
+  max-width: 520px;
+  box-shadow: 0px 12px 28px rgba(44, 36, 22, 0.07);
 }
 
 .pamphlet-quote {
@@ -827,14 +860,155 @@ body.cursor-hover .custom-cursor-ring {
 }
 
 /* ==========================================================================
-   FRAME 7: THE OFFERING — SCHEMES, INCUBATORS & CONNECTION
+   FRAME 7: EVENTS & ENGAGEMENTS (SLIDER & MODALS)
+   ========================================================================== */
+.frame-events {
+  background-color: var(--bg-plaster);
+  width: 100vw;
+  overflow: hidden;
+}
+
+.events-container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+.events-heading {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--color-ink);
+  margin-bottom: 60px;
+}
+
+.events-slider-track {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 20px 10px;
+}
+
+.events-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.event-card {
+  flex: 0 0 320px;
+  background-color: var(--bg-basin);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+  scroll-snap-align: start;
+  box-shadow: 0px 4px 16px rgba(44, 36, 22, 0.03);
+  transition: transform 300ms ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+}
+
+.event-photo-wrapper {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.event-svg {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(196, 181, 160, 0.4);
+}
+
+.event-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.event-line {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--color-earth);
+  line-height: 1.5;
+}
+
+/* Event Modal */
+.event-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 36, 22, 0.35);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.event-modal-content {
+  background-color: var(--bg-plaster);
+  border: 1.5px solid var(--color-border);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  box-shadow: 0px 16px 40px rgba(44, 36, 22, 0.12);
+}
+
+.event-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--color-copper);
+}
+
+.event-modal-content h4 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.event-modal-meta {
+  font-size: 12px;
+  color: var(--color-copper);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.event-modal-content p {
+  font-size: 14px;
+  color: var(--color-earth);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.event-modal-speaker {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-ink);
+}
+
+/* ==========================================================================
+   FRAME 8: THE OFFERING & CONTACT
    ========================================================================== */
 .frame-offering {
   background-color: var(--bg-plaster);
 }
 
 .offering-container {
-  max-width: 1000px;
+  max-width: 1050px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -848,13 +1022,12 @@ body.cursor-hover .custom-cursor-ring {
 .offering-heading {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 26px;
   color: var(--color-ink);
   margin-bottom: 36px;
   line-height: 1.4;
 }
 
-/* Schemes Grid */
 .schemes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -909,7 +1082,6 @@ body.cursor-hover .custom-cursor-ring {
   width: 100%;
 }
 
-/* Scheme Modal */
 .scheme-modal {
   position: fixed;
   inset: 0;
@@ -962,7 +1134,6 @@ body.cursor-hover .custom-cursor-ring {
   text-decoration: none;
 }
 
-/* Incubators List */
 .incubators-list {
   list-style: none;
   display: flex;
@@ -996,59 +1167,85 @@ body.cursor-hover .custom-cursor-ring {
   color: var(--color-copper);
 }
 
-/* Connection Point Basin */
+/* Contact Details Basin Grid */
 .offering-connection {
   display: flex;
   justify-content: center;
-  text-align: center;
+  width: 100%;
 }
 
 .connection-vessel {
-  max-width: 650px;
-  padding: 48px 40px;
+  width: 100%;
+  max-width: 850px;
+  padding: 56px 48px;
   flex-direction: column;
-  gap: 28px;
+  gap: 36px;
 }
 
 .connection-headline {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 28px;
+  font-size: 32px;
   color: var(--color-ink);
+  margin-bottom: 8px;
 }
 
-.connection-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.contact-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  text-align: left;
   width: 100%;
 }
 
-.connection-link {
+.contact-block {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-block.full-width {
+  grid-column: span 2;
+}
+
+.contact-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-copper);
+}
+
+.contact-value {
   font-family: var(--font-sans);
   font-size: 15px;
-  font-weight: 400;
-  color: var(--color-earth);
+  color: var(--color-ink);
   text-decoration: none;
   transition: color 300ms ease;
 }
 
-.connection-link:hover {
-  color: var(--color-ink);
-}
-
-.connection-excel-note {
-  font-size: 12px;
-  font-weight: 300;
+.contact-value:hover {
   color: var(--color-copper);
 }
 
+.contact-sep {
+  color: var(--color-border);
+  margin: 0 4px;
+}
+
+.contact-address-text, .contact-location-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-earth);
+  line-height: 1.5;
+}
+
+.schedule-link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* ==========================================================================
-   FOOTER & DISCLAIMER
+   FRAME 9: FOOTER & DISCLAIMER
    ========================================================================== */
 .site-footer {
   background-color: var(--bg-plaster);
@@ -1105,8 +1302,8 @@ body.cursor-hover .custom-cursor-ring {
     grid-template-columns: 1fr;
   }
 
-  .vitrines-grid {
-    grid-template-columns: 1fr 1fr;
+  .vitrines-grid.grid-6 {
+    grid-template-columns: 1fr;
   }
 
   .revelation-number {
@@ -1117,15 +1314,17 @@ body.cursor-hover .custom-cursor-ring {
     grid-template-columns: 1fr;
   }
 
+  .contact-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-block.full-width {
+    grid-column: span 1;
+  }
+
   .incubator-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .vitrines-grid {
-    grid-template-columns: 1fr;
   }
 }

@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initFrame3Sanctum();
   initFrame4Gallery();
   initFrame5Wisdom();
-  initFrame7Offering();
+  initFrame6Philosophy();
+  initFrame7Events();
+  initFrame8Offering();
 });
 
 /* ==========================================================================
@@ -31,12 +33,10 @@ function initCustomCursor() {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    // Instant dot movement
     dot.style.left = `${mouseX}px`;
     dot.style.top = `${mouseY}px`;
   });
 
-  // Smooth ring tracking loop
   function animateRing() {
     ringX += (mouseX - ringX) * 0.15;
     ringY += (mouseY - ringY) * 0.15;
@@ -48,8 +48,7 @@ function initCustomCursor() {
   }
   animateRing();
 
-  // Hover detection on interactive elements
-  const interactiveSelectors = 'a, button, input, textarea, [role="button"], .question-line, .niche-card, .scheme-item, .incubator-item, .vitrine-card';
+  const interactiveSelectors = 'a, button, input, textarea, [role="button"], .question-line, .niche-card, .scheme-item, .incubator-item, .vitrine-card, .event-card';
 
   document.querySelectorAll(interactiveSelectors).forEach((el) => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
@@ -74,7 +73,6 @@ function initFrame1Bell() {
 
   let isRevealed = false;
 
-  // Click or keydown on query vessel triggers breathing reveal
   vessel.addEventListener('click', revealQuestions);
   vessel.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -87,15 +85,12 @@ function initFrame1Bell() {
     if (isRevealed) return;
     isRevealed = true;
     vessel.setAttribute('aria-expanded', 'true');
-
-    // Reveal questions container
     revealedQuestions.classList.remove('hidden');
 
-    // Staggered reveal animation
     questionLines.forEach((line, index) => {
       line.style.opacity = '0';
       line.style.transform = 'translateY(12px)';
-      line.style.transition = `opacity 500ms var(--ease-temple) ${index * 200}ms, transform 500ms var(--ease-temple) ${index * 200}ms, background-color 400ms var(--ease-temple)`;
+      line.style.transition = `opacity 500ms var(--ease-temple) ${index * 150}ms, transform 500ms var(--ease-temple) ${index * 150}ms, background-color 400ms var(--ease-temple)`;
 
       setTimeout(() => {
         line.style.opacity = '1';
@@ -104,7 +99,6 @@ function initFrame1Bell() {
     });
   }
 
-  // Clicking a specific question transforms vessel into email capture
   questionLines.forEach((line) => {
     line.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -126,14 +120,13 @@ function initFrame1Bell() {
     activeContent.classList.remove('hidden');
 
     if (selectedQuestion) {
-      vesselPromptText.textContent = `Regarding "${selectedQuestion}" — leave your email and we'll respond within a sunrise.`;
+      vesselPromptText.textContent = `Regarding "${selectedQuestion}" — leave your email and we respond within a sunrise.`;
     }
 
     const emailInput = document.getElementById('vesselEmailInput');
     if (emailInput) emailInput.focus();
   }
 
-  // Handle Form Submission
   if (vesselEmailForm) {
     vesselEmailForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -144,7 +137,7 @@ function initFrame1Bell() {
 }
 
 /* ==========================================================================
-   3. FRAME 2: THE CORRIDOR — HORIZONTAL TRUST SCROLL
+   3. FRAME 2: THE CORRIDOR — HORIZONTAL TRUST SCROLL (8 PANELS)
    ========================================================================== */
 function initFrame2Corridor() {
   const track = document.getElementById('corridorTrack');
@@ -152,7 +145,6 @@ function initFrame2Corridor() {
 
   if (!track || !tallyMarks.length) return;
 
-  // Synchronize scroll position with tally marks
   track.addEventListener('scroll', () => {
     const scrollLeft = track.scrollLeft;
     const itemWidth = track.clientWidth * 0.65;
@@ -170,7 +162,6 @@ function initFrame2Corridor() {
     });
   });
 
-  // Enable Mouse Drag Horizontal Scroll
   let isDown = false;
   let startX;
   let scrollLeft;
@@ -230,14 +221,13 @@ function initFrame4Gallery() {
     });
   });
 
-  // Handle drawer form submissions
   const drawerForms = document.querySelectorAll('.drawer-form');
   drawerForms.forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const parentDrawer = form.closest('.vitrine-drawer');
       if (parentDrawer) {
-        parentDrawer.innerHTML = '<p class="drawer-text" style="color:#8B6F47;">&#10003; Thank you. Case study and complete portfolio spreadsheet sent to your inbox.</p>';
+        parentDrawer.innerHTML = '<p class="drawer-text" style="color:#8B6F47;">&#10003; Case study and full portfolio spreadsheet sent to your email.</p>';
       }
     });
   });
@@ -258,7 +248,6 @@ function initFrame5Wisdom() {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
 
-            // Trigger count up for 113,000+
             if (entry.target.id === 'rev-1' && !hasCounted && counterElement) {
               hasCounted = true;
               animateMechanicalCounter(counterElement, 0, 113000, 2000);
@@ -294,9 +283,97 @@ function initFrame5Wisdom() {
 }
 
 /* ==========================================================================
-   7. FRAME 7: THE OFFERING — SCHEMES, INCUBATORS & MODALS
+   7. FRAME 6: PHILOSOPHY TEAM REVEAL TOGGLE
    ========================================================================== */
-function initFrame7Offering() {
+function initFrame6Philosophy() {
+  const toggleBtn = document.getElementById('philosophyToggle');
+  const revealContent = document.getElementById('philosophyReveal');
+
+  if (toggleBtn && revealContent) {
+    toggleBtn.addEventListener('click', () => {
+      revealContent.classList.toggle('hidden');
+    });
+  }
+}
+
+/* ==========================================================================
+   8. FRAME 7: EVENTS & ENGAGEMENTS SLIDER & MODAL
+   ========================================================================== */
+function initFrame7Events() {
+  const eventCards = document.querySelectorAll('.event-card');
+  const modal = document.getElementById('eventModal');
+  const modalTitle = document.getElementById('eventModalTitle');
+  const modalMeta = document.getElementById('eventModalMeta');
+  const modalDesc = document.getElementById('eventModalDesc');
+  const modalClose = document.getElementById('eventModalClose');
+
+  const eventData = {
+    sine: {
+      title: "SINE — IIT Bombay",
+      meta: "Technology Business Incubator • IIT Bombay",
+      desc: "Invited keynote and legal clinic on technology law strategies, patent defensive publishing, and corporate structure for deep-tech innovators."
+    },
+    boeing: {
+      title: "Boeing BUILD 3.0",
+      meta: "Boeing University Innovation Leadership Development • Aerospace & Defense",
+      desc: "Comprehensive workshop on IP fundamentals, patent protection, and licensing agreements tailored for aerospace and defense tech founders."
+    },
+    roorkee: {
+      title: "IIT Roorkee",
+      meta: "Entrepreneurship Development Cell • IIT Roorkee",
+      desc: "Expert panel on innovation protection, university IP commercialization, and founder equity structures."
+    },
+    cii: {
+      title: "CII — Confederation of Indian Industry",
+      meta: "National IPR Conference • Confederation of Indian Industry",
+      desc: "Keynote on IPR awareness, trademark valuation, and patent enforcement for Indian MSMEs and technopreneurs."
+    },
+    les: {
+      title: "LES APAC Conference",
+      meta: "Licensing Executives Society Asia-Pacific",
+      desc: "Address on 'IP Drives the Bottom Line' — cross-border technology licensing, patent valuation, and M&A transactions."
+    },
+    iic: {
+      title: "Institution's Innovation Council",
+      meta: "Ministry of Education Innovation Cell",
+      desc: "Strategy session on building robust IP ecosystems and incubation legal compliance in higher education institutes."
+    },
+    its: {
+      title: "ITS Engineering College, Greater Noida",
+      meta: "Entrepreneurship & Venture Capital Summit • Greater Noida",
+      desc: "Session on Angel Investment term sheets, VC due diligence readiness, and founder vesting frameworks."
+    }
+  };
+
+  eventCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const key = card.getAttribute('data-event');
+      const data = eventData[key];
+
+      if (data && modal) {
+        modalTitle.textContent = data.title;
+        modalMeta.textContent = data.meta;
+        modalDesc.textContent = data.desc;
+        modal.classList.remove('hidden');
+      }
+    });
+  });
+
+  if (modalClose) {
+    modalClose.addEventListener('click', () => modal.classList.add('hidden'));
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  }
+}
+
+/* ==========================================================================
+   9. FRAME 8: THE OFFERING & SCHEME MODALS
+   ========================================================================== */
+function initFrame8Offering() {
   const schemeItems = document.querySelectorAll('.scheme-item');
   const modal = document.getElementById('schemeModal');
   const modalTitle = document.getElementById('schemeModalTitle');
