@@ -1,16 +1,16 @@
 /* ==========================================================================
    STARTUPINDIA.LAW — "THE SANCTUARY"
-   Final Monochromatic Sacred CSS Design System
+   Final Monochromatic Sacred CSS Design System & Orbit of Questions Hero
    ========================================================================== */
 
-/* 1. Global Custom Properties */
 :root {
   --bg-canvas: #FFFFFF;
   --bg-soft: #F8F8F8;
   --color-ink: #1A1A1A;       /* Primary obsidian ink */
   --color-charcoal: #4A4A4A;  /* Secondary charcoal */
   --color-grey: #8C8C8C;      /* Tertiary whisper grey */
-  --color-line: #E0E0E0;      /* Subtle border pencil line */
+  --color-line: #E0E0E0;      /* Subtle border line */
+  --color-input-border: #D0D0D0;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -18,7 +18,6 @@
   --ease-temple: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
 
-/* 2. Reset & Global Styles */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -47,7 +46,6 @@ a, button, input, select, textarea, [role="button"] {
   cursor: none;
 }
 
-/* 3. Simple Monochromatic Cursor */
 .custom-cursor-dot {
   position: fixed;
   top: 0;
@@ -62,7 +60,6 @@ a, button, input, select, textarea, [role="button"] {
   transition: opacity 300ms ease;
 }
 
-/* 4. Layout Containers & Structural Axis */
 .hidden {
   display: none !important;
 }
@@ -85,7 +82,6 @@ a, button, input, select, textarea, [role="button"] {
   padding: 120px 24px;
 }
 
-/* Typography Scale */
 h1 {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -122,174 +118,282 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 1: THE BELL (CENTERED LANDING EXCEPTION)
+   FRAME 1: HERO SECTION — "ORBIT OF QUESTIONS"
    ========================================================================== */
-.frame-bell {
+.frame-hero {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: calc(35vh - 80px);
+  width: 100vw;
+  background-color: var(--bg-canvas);
+  overflow: hidden;
+  justify-content: flex-start;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.bell-container {
-  max-width: 900px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.bell-question {
-  text-align: center;
+.hero-heading {
   font-size: 64px;
-  margin-bottom: 120px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.2;
+  opacity: 0;
+  animation: heroFadeIn 800ms ease-out 200ms forwards;
 }
 
-.query-vessel-wrapper {
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.constellation-container {
+  position: relative;
   width: 100%;
-  max-width: 600px;
+  height: 60vh;
+  min-height: 480px;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+/* Central Input Vessel (Anchored) */
+.central-vessel-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 600ms var(--ease-temple);
 }
 
-.query-vessel {
+.central-vessel-box {
   width: 100%;
-  min-height: 64px;
-  background-color: var(--bg-soft);
-  border: 1px solid var(--color-line);
-  border-radius: 12px;
-  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 24px;
-  transition: border-color 400ms var(--ease-temple), box-shadow 400ms var(--ease-temple);
+}
+
+.central-vessel-input {
+  width: 100%;
+  height: 56px;
+  background: var(--bg-canvas);
+  border: 1.5px solid var(--color-input-border);
+  border-radius: 28px;
+  padding: 0 24px;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-ink);
   outline: none;
-}
-
-.query-vessel:hover, .query-vessel:focus {
-  border-color: var(--color-ink);
-  box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.08);
-}
-
-.vessel-placeholder {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 20px;
-  color: var(--color-grey);
-}
-
-.vessel-active-content {
-  width: 100%;
+  box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.03);
+  transition: border-color 400ms ease, box-shadow 400ms ease;
   text-align: center;
 }
 
-.vessel-prompt {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  color: var(--color-ink);
-  margin-bottom: 16px;
+.central-vessel-input::placeholder {
+  color: var(--color-grey);
+  font-style: italic;
 }
 
-.vessel-email-form {
+.central-vessel-input:focus {
+  border-color: var(--color-ink);
+  box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Email Reveal Container */
+.email-reveal-container {
+  width: 100%;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  animation: emailFadeIn 500ms ease-out 300ms forwards;
 }
 
-.vessel-input-group {
+@keyframes emailFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.selected-question-text {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.email-reveal-form {
   display: flex;
   width: 100%;
   border-bottom: 1px solid var(--color-line);
   padding-bottom: 4px;
 }
 
-.vessel-input {
+.email-reveal-input {
   flex: 1;
   background: transparent;
   border: none;
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 15px;
   color: var(--color-ink);
-  padding: 8px 0;
+  padding: 8px;
   outline: none;
   text-align: center;
 }
 
-.vessel-submit-btn {
+.email-submit-btn {
   background: transparent;
   border: none;
-  font-size: 22px;
-  color: var(--color-ink);
-  padding: 4px 12px;
-  transition: transform 300ms ease;
-}
-
-.vessel-submit-btn:hover {
-  transform: translateX(4px);
-}
-
-.vessel-subnote {
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 14px;
   color: var(--color-grey);
-  margin-top: 10px;
+  padding: 4px 12px;
+  transition: color 300ms ease;
+}
+
+.email-submit-btn:hover {
+  color: var(--color-ink);
+}
+
+.email-reveal-subnote {
+  font-size: 11px;
+  color: var(--color-grey);
+  margin-top: 8px;
 }
 
 .vessel-confirmation {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
+  margin-top: 16px;
+  font-size: 15px;
   color: var(--color-ink);
 }
 
-.revealed-questions {
-  width: 100%;
-  margin-top: 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: left;
+/* Floating Questions (6 Button Pills) */
+.pills-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
 }
 
-.question-line {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 18px;
-  border-bottom: 1px solid transparent;
-  border-radius: 6px;
-  outline: none;
-  transition: border-color 300ms ease, background-color 300ms ease;
-}
-
-.question-line:hover, .question-line:focus {
-  background-color: var(--bg-soft);
-  border-color: var(--color-line);
-}
-
-.ink-circle {
-  width: 10px;
-  height: 10px;
+.floating-pill {
+  position: absolute;
+  height: 44px;
+  padding: 0 20px;
+  background: var(--bg-canvas);
   border: 1px solid var(--color-line);
-  border-radius: 50%;
-  flex-shrink: 0;
-  transition: background-color 400ms ease, border-color 400ms ease;
-}
-
-.question-line:hover .ink-circle {
-  background-color: var(--color-ink);
-  border-color: var(--color-ink);
-}
-
-.question-text {
+  border-radius: 22px;
   font-family: var(--font-sans);
+  font-size: 15px;
   font-weight: 300;
-  font-size: 18px;
-  color: var(--color-charcoal);
+  color: var(--color-ink);
+  cursor: pointer;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  z-index: 2;
+  outline: none;
+  transition: border-color 400ms ease, background 400ms ease, opacity 600ms ease;
+  will-change: transform;
+  animation: removeWillChange 0.1s 3s forwards;
+}
+
+@keyframes removeWillChange {
+  to { will-change: auto; }
+}
+
+.floating-pill:hover {
+  border-color: var(--color-ink);
+  background: var(--bg-soft);
+  animation-play-state: paused !important;
+}
+
+/* Initial Floating Positions & Individual Animations */
+.pill-1 {
+  top: 15%;
+  left: 5%;
+  animation: float1 7.2s ease-in-out infinite alternate, removeWillChange 0.1s 3s forwards;
+}
+
+.pill-2 {
+  top: 20%;
+  right: 8%;
+  animation: float2 6.8s ease-in-out 0.5s infinite alternate, removeWillChange 0.1s 3s forwards;
+}
+
+.pill-3 {
+  top: 50%;
+  left: 3%;
+  animation: float3 7.6s ease-in-out 1.0s infinite alternate, removeWillChange 0.1s 3s forwards;
+}
+
+.pill-4 {
+  top: 55%;
+  right: 5%;
+  animation: float4 6.4s ease-in-out 0.3s infinite alternate, removeWillChange 0.1s 3s forwards;
+}
+
+.pill-5 {
+  top: 75%;
+  left: 12%;
+  animation: float5 7.0s ease-in-out 0.8s infinite alternate, removeWillChange 0.1s 3s forwards;
+}
+
+.pill-6 {
+  top: 72%;
+  right: 15%;
+  animation: float6 6.6s ease-in-out 1.2s infinite alternate, removeWillChange 0.1s 3s forwards;
+}
+
+/* Organic Floating GPU Keyframe Trajectories */
+@keyframes float1 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(18px, -7px, 0); }
+  50% { transform: translate3d(-9px, 14px, 0); }
+  75% { transform: translate3d(-18px, -14px, 0); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  30% { transform: translate3d(-22px, 10px, 0); }
+  60% { transform: translate3d(12px, -16px, 0); }
+  85% { transform: translate3d(-15px, 8px, 0); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  20% { transform: translate3d(20px, 8px, 0); }
+  55% { transform: translate3d(-12px, -12px, 0); }
+  80% { transform: translate3d(15px, 10px, 0); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  35% { transform: translate3d(-24px, -14px, 0); }
+  70% { transform: translate3d(14px, 18px, 0); }
+}
+
+@keyframes float5 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  40% { transform: translate3d(16px, -20px, 0); }
+  75% { transform: translate3d(-16px, 12px, 0); }
+}
+
+@keyframes float6 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-20px, 15px, 0); }
+  65% { transform: translate3d(18px, -10px, 0); }
+}
+
+/* Idle Breathing Keyframes */
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* Dimmed State when Pill Selected */
+.pills-stack.dimmed .floating-pill {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 /* ==========================================================================
@@ -577,7 +681,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 5: THE WISDOM POOL (DEAD-CENTER ALIGNED SACRED REVERENCE)
+   FRAME 5: THE WISDOM POOL
    ========================================================================== */
 .frame-wisdom {
   background-color: var(--bg-canvas);
@@ -632,7 +736,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 6: THE PHILOSOPHY (DEAD-CENTER ALIGNED BODHI TREE & STATEMENT)
+   FRAME 6: THE PHILOSOPHY
    ========================================================================== */
 .frame-tree {
   background-color: var(--bg-canvas);
@@ -773,7 +877,6 @@ p, body {
   color: var(--color-charcoal);
 }
 
-/* Event Modal */
 .event-modal {
   position: fixed;
   inset: 0;
@@ -1019,7 +1122,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 9: FOOTER (CENTER ALIGNED DIVIDER & DISCLAIMER)
+   FRAME 9: FOOTER
    ========================================================================== */
 .site-footer {
   background-color: var(--bg-canvas);
@@ -1059,27 +1162,62 @@ p, body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   MOBILE RESPONSIVE & PRAYER FLAG STACK FALLBACK (<768px)
    ========================================================================== */
 @media (max-width: 768px) {
-  .frame {
-    padding: 80px 20px;
+  .frame-hero {
+    min-height: 90vh;
+    padding-top: 60px;
   }
 
-  h1, .bell-question {
-    font-size: 36px;
+  .hero-heading {
+    font-size: 32px;
+    max-width: 320px;
   }
 
-  h2, .sanctum-headline, .section-headline, .tree-headline, .events-heading {
-    font-size: 28px;
+  .constellation-container {
+    height: auto;
+    overflow: visible;
+    margin-top: 32px;
   }
 
-  h3, .niche-title, .vitrine-name, .connection-headline {
-    font-size: 22px;
+  .central-vessel-wrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: calc(100% - 48px);
+    margin: 0 24px 32px 24px;
   }
 
-  p, body {
-    font-size: 16px;
+  /* Prayer Flag Stack Fallback — Zero Motion */
+  .pills-stack {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .floating-pill {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    animation: none !important;
+    width: calc(100% - 64px);
+    display: block;
+  }
+
+  /* Staggered margins for organic hand-placed prayer flag feel */
+  .pill-1, .pill-3, .pill-5 {
+    margin-left: 24px;
+  }
+
+  .pill-2, .pill-4, .pill-6 {
+    margin-left: auto;
+    margin-right: 24px;
   }
 
   .revelation-number {
@@ -1104,5 +1242,12 @@ p, body {
 
   .disclaimer-text {
     font-size: 10px;
+  }
+}
+
+/* Prefers Reduced Motion Safeguards */
+@media (prefers-reduced-motion: reduce) {
+  .floating-pill, .hero-heading {
+    animation: none !important;
   }
 }

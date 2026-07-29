@@ -1,11 +1,11 @@
 /* ==========================================================================
    STARTUPINDIA.LAW — "THE SANCTUARY"
-   Final Monochromatic Sacred Controller
+   Final Monochromatic Sacred Controller & Hero Orbit Mechanics
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
-  initFrame1Bell();
+  initHeroOrbit();
   initFrame2Corridor();
   initFrame4Gallery();
   initFrame5Wisdom();
@@ -27,83 +27,81 @@ function initCustomCursor() {
 }
 
 /* ==========================================================================
-   2. FRAME 1: THE BELL
+   2. HERO SECTION — "ORBIT OF QUESTIONS" MECHANICS
    ========================================================================== */
-function initFrame1Bell() {
-  const vessel = document.getElementById('queryVessel');
-  const placeholder = document.getElementById('vesselPlaceholder');
-  const activeContent = document.getElementById('vesselActiveContent');
-  const revealedQuestions = document.getElementById('revealedQuestions');
-  const questionLines = document.querySelectorAll('.question-line');
-  const vesselEmailForm = document.getElementById('vesselEmailForm');
+function initHeroOrbit() {
+  const mainInput = document.getElementById('mainVesselInput');
+  const pillsStack = document.getElementById('pillsStack');
+  const pills = document.querySelectorAll('.floating-pill');
+  const emailRevealContainer = document.getElementById('emailRevealContainer');
+  const selectedQuestionText = document.getElementById('selectedQuestionText');
+  const userEmailInput = document.getElementById('userEmailInput');
+  const emailForm = document.getElementById('emailForm');
   const vesselConfirmation = document.getElementById('vesselConfirmation');
-  const vesselPromptText = document.getElementById('vesselPromptText');
 
-  if (!vessel) return;
+  let activeQuestion = '';
 
-  let isRevealed = false;
-
-  vessel.addEventListener('click', revealQuestions);
-  vessel.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      revealQuestions();
-    }
+  // Clicking any floating pill selects the question
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const qText = pill.getAttribute('data-question');
+      selectQuestion(qText);
+    });
   });
 
-  function revealQuestions() {
-    if (isRevealed) return;
-    isRevealed = true;
-    vessel.setAttribute('aria-expanded', 'true');
-    revealedQuestions.classList.remove('hidden');
-
-    questionLines.forEach((line, index) => {
-      line.style.opacity = '0';
-      line.style.transform = 'translateY(10px)';
-      line.style.transition = `opacity 500ms var(--ease-temple) ${index * 120}ms, transform 500ms var(--ease-temple) ${index * 120}ms`;
-
-      setTimeout(() => {
-        line.style.opacity = '1';
-        line.style.transform = 'translateY(0)';
-      }, 50);
-    });
-  }
-
-  questionLines.forEach((line) => {
-    line.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const questionText = line.getAttribute('data-question');
-      transformVesselToEmail(questionText);
-    });
-
-    line.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
+  // Typing in main input & pressing Enter triggers selection
+  if (mainInput) {
+    mainInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && mainInput.value.trim() !== '') {
         e.preventDefault();
-        const questionText = line.getAttribute('data-question');
-        transformVesselToEmail(questionText);
+        selectQuestion(mainInput.value.trim());
       }
     });
-  });
+  }
 
-  function transformVesselToEmail(selectedQuestion) {
-    placeholder.classList.add('hidden');
-    activeContent.classList.remove('hidden');
-
-    if (selectedQuestion) {
-      vesselPromptText.textContent = `Regarding "${selectedQuestion}" — leave your email and we respond within a sunrise.`;
+  function selectQuestion(question) {
+    activeQuestion = question;
+    if (mainInput) mainInput.value = question;
+    if (selectedQuestionText) {
+      selectedQuestionText.textContent = `Regarding "${question}" — leave your email below:`;
     }
 
-    const emailInput = document.getElementById('vesselEmailInput');
-    if (emailInput) emailInput.focus();
+    if (pillsStack) pillsStack.classList.add('dimmed');
+    if (emailRevealContainer) emailRevealContainer.classList.remove('hidden');
+    if (userEmailInput) userEmailInput.focus();
   }
 
-  if (vesselEmailForm) {
-    vesselEmailForm.addEventListener('submit', (e) => {
+  // Handle email submission
+  if (emailForm) {
+    emailForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      activeContent.classList.add('hidden');
-      vesselConfirmation.classList.remove('hidden');
+      if (emailRevealContainer) emailRevealContainer.classList.add('hidden');
+      if (vesselConfirmation) vesselConfirmation.classList.remove('hidden');
+
+      // Auto-reset after 5 seconds
+      setTimeout(() => {
+        if (vesselConfirmation) vesselConfirmation.classList.add('hidden');
+        if (mainInput) mainInput.value = '';
+        if (pillsStack) pillsStack.classList.remove('dimmed');
+      }, 5000);
     });
   }
+
+  // Minimal Idle Pulse Timer — 12 lines
+  let idleTimer;
+  const resetEvents = ['mousemove', 'click', 'scroll', 'touchstart'];
+  resetEvents.forEach((evt) => document.addEventListener(evt, resetIdleTimer));
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    pills.forEach((p) => (p.style.animationPlayState = 'running'));
+    idleTimer = setTimeout(() => {
+      if (!pills.length) return;
+      const randomPill = pills[Math.floor(Math.random() * pills.length)];
+      randomPill.style.animation = 'breathe 3s ease-in-out 1';
+    }, 20000);
+  }
+  resetIdleTimer();
 }
 
 /* ==========================================================================
@@ -131,7 +129,6 @@ function initFrame2Corridor() {
     });
   }
 
-  // Keyboard Left / Right Navigation
   window.addEventListener('keydown', (e) => {
     const rect = track.getBoundingClientRect();
     const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -145,7 +142,6 @@ function initFrame2Corridor() {
     }
   });
 
-  // Tally Marks Sync
   track.addEventListener('scroll', () => {
     if (!tallyMarks.length) return;
     const scrollLeft = track.scrollLeft;
