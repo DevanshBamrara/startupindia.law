@@ -1,0 +1,1131 @@
+/* ==========================================================================
+   STARTUPINDIA.LAW — "THE SANCTUARY"
+   Master CSS Design System
+   ========================================================================== */
+
+/* 1. Global Custom Properties */
+:root {
+  --bg-plaster: #FAF7F2;
+  --bg-basin: #F5F0E8;
+  --bg-granite: #F0EBE0;
+  --bg-dusk: #F2EEE6;
+  --color-ink: #2C2416;
+  --color-copper: #8B6F47;
+  --color-earth: #5C4A32;
+  --color-border: #C4B5A0;
+  --color-shadow: rgba(44, 36, 22, 0.06);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+
+  --ease-temple: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+/* 2. Reset & Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-plaster);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  cursor: none; /* Controlled by custom cursor */
+}
+
+body {
+  background-color: var(--bg-plaster);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide default cursor on interactive elements */
+a, button, input, select, textarea, [role="button"] {
+  cursor: none;
+}
+
+/* 3. Paper Texture & Noise Overlay */
+.paper-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  filter: url(#paper-grain);
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(44, 36, 22, 0.08) 0%, transparent 50%);
+}
+
+/* 4. Custom Cursor System */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-copper);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 400ms var(--ease-temple), 
+              height 400ms var(--ease-temple), 
+              background-color 400ms var(--ease-temple);
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-copper);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  animation: ring-pulse 3s infinite var(--ease-temple);
+  transition: width 400ms var(--ease-temple), 
+              height 400ms var(--ease-temple), 
+              opacity 400ms var(--ease-temple),
+              border-color 400ms var(--ease-temple);
+}
+
+@keyframes ring-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.15; }
+}
+
+/* Cursor Hover Expanded State */
+body.cursor-hover .custom-cursor-dot {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(139, 111, 71, 0.7);
+}
+
+body.cursor-hover .custom-cursor-ring {
+  width: 44px;
+  height: 44px;
+  border-color: var(--color-copper);
+  opacity: 0.8;
+}
+
+/* 5. Utility Layout & Animations */
+.hidden {
+  display: none !important;
+}
+
+.frame {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px;
+  transition: background-color 1s ease;
+}
+
+/* ==========================================================================
+   FRAME 1: THE BELL — LANDING PAGE
+   ========================================================================== */
+.frame-bell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: calc(38vh - 100px); /* Aligned slightly above optical center */
+}
+
+.bell-container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 800ms var(--ease-temple);
+}
+
+.bell-question {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  margin-bottom: 140px; /* Generous breathing space down to vessel */
+  transition: transform 800ms var(--ease-temple), opacity 800ms var(--ease-temple);
+}
+
+.query-vessel-wrapper {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Recessed Stone Query Basin */
+.query-vessel {
+  width: 100%;
+  min-height: 64px;
+  background-color: var(--bg-basin);
+  border: 1.5px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: inset 0px 3px 6px rgba(44, 36, 22, 0.08),
+              0px 4px 16px rgba(44, 36, 22, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  transition: all 600ms var(--ease-temple);
+  position: relative;
+  outline: none;
+}
+
+.query-vessel:hover, .query-vessel:focus {
+  border-color: var(--color-copper);
+  box-shadow: inset 0px 2px 4px rgba(44, 36, 22, 0.05),
+              0px 6px 20px rgba(139, 111, 71, 0.08);
+}
+
+.vessel-placeholder {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-copper);
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+.vessel-active-content {
+  width: 100%;
+  text-align: center;
+}
+
+.vessel-prompt {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: var(--color-ink);
+  margin-bottom: 16px;
+}
+
+.vessel-email-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.vessel-input-group {
+  display: flex;
+  width: 100%;
+  max-width: 440px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 4px;
+}
+
+.vessel-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-ink);
+  padding: 8px 12px;
+  outline: none;
+  text-align: center;
+}
+
+.vessel-submit-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--color-copper);
+  padding: 4px 12px;
+  transition: transform 300ms ease, color 300ms ease;
+}
+
+.vessel-submit-btn:hover {
+  color: var(--color-ink);
+  transform: translateX(4px);
+}
+
+.vessel-subnote {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--color-copper);
+  margin-top: 10px;
+}
+
+.vessel-confirmation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-earth);
+  font-size: 15px;
+}
+
+.confirm-symbol {
+  color: var(--color-copper);
+  font-size: 18px;
+}
+
+/* Staggered Revealing Questions */
+.revealed-questions {
+  width: 100%;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.question-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-align: left;
+  outline: none;
+  transition: background-color 400ms var(--ease-temple);
+}
+
+.question-line:hover, .question-line:focus {
+  background-color: rgba(245, 240, 232, 0.6);
+}
+
+/* Left Circle Ink Animation */
+.ink-circle {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color 600ms var(--ease-temple), border-color 600ms var(--ease-temple);
+}
+
+.question-line:hover .ink-circle, .question-line:focus .ink-circle {
+  background-color: var(--color-copper);
+  border-color: var(--color-copper);
+}
+
+.question-text {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--color-earth);
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   FRAME 2: THE CORRIDOR — HORIZONTAL TRUST SCROLL
+   ========================================================================== */
+.frame-corridor {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  justify-content: space-between;
+  background-color: var(--bg-plaster);
+}
+
+.corridor-header-hint {
+  padding-top: 60px;
+  text-align: center;
+}
+
+.scroll-hint-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+.corridor-track {
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar IE */
+  padding: 0 10vw;
+  gap: 40px;
+  align-items: center;
+}
+
+.corridor-track::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+/* Granite/Sandstone Panel */
+.corridor-panel {
+  flex: 0 0 65vw;
+  max-width: 600px;
+  height: 75%;
+  background-color: var(--bg-granite);
+  border-radius: 12px;
+  scroll-snap-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  box-shadow: 0px 8px 32px rgba(44, 36, 22, 0.04);
+  transition: transform 600ms var(--ease-temple), background-color 600ms ease;
+}
+
+/* Panel subtle micro-variations */
+.panel-1 { background-color: #F0EBE0; }
+.panel-2 { background-color: #EEE9DF; }
+.panel-3 { background-color: #F2EDE4; }
+.panel-4 { background-color: #EFEAE0; }
+.panel-5 { background-color: #EDE8DE; }
+.panel-6 { background-color: #F1ECE2; }
+
+/* Edge Vignette */
+.panel-vignette {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 50%, rgba(44, 36, 22, 0.05) 100%);
+}
+
+.panel-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.panel-number {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--color-copper);
+  letter-spacing: 0.2em;
+}
+
+.panel-quote {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-ink);
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6); /* Embossed stone feel */
+}
+
+.panel-subtext {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-earth);
+  letter-spacing: 0.05em;
+}
+
+/* Tally Mark Progress Bar */
+.corridor-progress {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 60px;
+}
+
+.tally-mark {
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-border);
+  transition: background-color 400ms var(--ease-temple), width 400ms var(--ease-temple);
+}
+
+.tally-mark.active {
+  background-color: var(--color-copper);
+  width: 32px;
+}
+
+/* ==========================================================================
+   FRAME 3: THE SANCTUM — WHAT WE DO
+   ========================================================================== */
+.frame-sanctum {
+  background-color: var(--bg-plaster);
+}
+
+.sanctum-container {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+}
+
+.sanctum-headline {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.5;
+  color: var(--color-ink);
+  margin-bottom: 120px;
+}
+
+/* 3x2 Grid */
+.niches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.niche-card {
+  background-color: var(--bg-basin);
+  border-radius: 8px;
+  padding: 60px 40px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: inset 0px 2px 8px rgba(44, 36, 22, 0.06);
+  transition: box-shadow 600ms var(--ease-temple);
+}
+
+/* Diya Glow Effect on Hover */
+.diya-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(245, 230, 204, 0.7) 0%, rgba(245, 230, 204, 0) 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms var(--ease-temple);
+}
+
+.niche-card:hover {
+  box-shadow: inset 0px 1px 4px rgba(44, 36, 22, 0.02);
+}
+
+.niche-card:hover .diya-glow {
+  opacity: 1;
+}
+
+.niche-symbol {
+  margin-bottom: 20px;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+}
+
+.niche-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.niche-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--color-earth);
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   FRAME 4: THE GALLERY OF BEINGS — NOTABLE STARTUPS
+   ========================================================================== */
+.frame-gallery {
+  background-color: var(--bg-plaster);
+}
+
+.gallery-container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+.gallery-section-label {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  display: block;
+  margin-bottom: 64px;
+}
+
+.vitrines-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.vitrine-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Museum Vitrine Styling */
+.vitrine-frame {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  padding: 18px;
+  background-color: var(--bg-plaster);
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 16px rgba(44, 36, 22, 0.02);
+}
+
+.vitrine-mat {
+  background-color: #FAF8F5;
+  padding: 12px;
+}
+
+.vitrine-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.artifact-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(196, 181, 160, 0.3);
+  filter: sepia(0.15) contrast(0.95);
+  transition: transform 600ms var(--ease-temple), filter 600ms ease;
+}
+
+.vitrine-card:hover .artifact-svg {
+  transform: scale(1.02);
+  filter: sepia(0.05) contrast(1);
+}
+
+.vitrine-caption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-ink);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.vitrine-mystery-link {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--color-copper);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 300ms ease;
+  margin-top: 4px;
+}
+
+.vitrine-mystery-link:hover {
+  color: var(--color-ink);
+}
+
+/* Breathing Drawer Reveal */
+.vitrine-drawer {
+  width: 100%;
+  margin-top: 16px;
+  padding: 18px;
+  background-color: var(--bg-basin);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  text-align: left;
+  animation: drawer-fade-down 500ms var(--ease-temple);
+}
+
+@keyframes drawer-fade-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.drawer-text {
+  font-size: 13px;
+  color: var(--color-earth);
+  margin-bottom: 12px;
+}
+
+.drawer-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.drawer-form input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--color-ink);
+  outline: none;
+}
+
+.drawer-form button {
+  background: var(--color-copper);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  transition: background-color 300ms ease;
+}
+
+.drawer-form button:hover {
+  background-color: var(--color-ink);
+}
+
+.drawer-subnote {
+  font-size: 10px;
+  color: var(--color-copper);
+}
+
+/* ==========================================================================
+   FRAME 5: THE WISDOM POOL — DATA AS KOAN
+   ========================================================================== */
+.frame-wisdom {
+  background-color: var(--bg-dusk); /* Atmospheric dusk tone */
+  min-height: 100vh;
+}
+
+.wisdom-container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+}
+
+.wisdom-revelation {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s var(--ease-temple), transform 1s var(--ease-temple);
+}
+
+.wisdom-revelation.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revelation-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 1;
+  color: var(--color-ink);
+  text-shadow: 0px 4px 12px rgba(44, 36, 22, 0.08);
+  margin-bottom: 24px;
+}
+
+.revelation-text {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--color-earth);
+  letter-spacing: 0.05em;
+}
+
+.wisdom-whisper {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--color-copper);
+  margin-top: 20px;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   FRAME 6: THE TREE & THE SEATED ONE — "OUR TIME HAS ARRIVED"
+   ========================================================================== */
+.frame-tree {
+  background-color: var(--bg-dusk);
+  text-align: center;
+}
+
+.tree-container {
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bodhi-tree-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 40px;
+}
+
+.bodhi-tree-svg {
+  width: 100%;
+  height: auto;
+}
+
+.tree-headline {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 36px;
+  color: var(--color-ink);
+  margin-bottom: 16px;
+}
+
+.tree-subtext {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--color-earth);
+  margin-bottom: 12px;
+}
+
+.tree-advocate {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--color-copper);
+  margin-bottom: 60px;
+}
+
+/* Physical Pamphlet Element */
+.pamphlet-card {
+  background-color: var(--bg-basin);
+  border: 1px solid var(--color-border);
+  padding: 24px 36px;
+  border-radius: 4px;
+  max-width: 500px;
+  box-shadow: 0px 12px 28px rgba(44, 36, 22, 0.07); /* Long afternoon shadow */
+}
+
+.pamphlet-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   FRAME 7: THE OFFERING — SCHEMES, INCUBATORS & CONNECTION
+   ========================================================================== */
+.frame-offering {
+  background-color: var(--bg-plaster);
+}
+
+.offering-container {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.offering-section {
+  text-align: left;
+}
+
+.offering-heading {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--color-ink);
+  margin-bottom: 36px;
+  line-height: 1.4;
+}
+
+/* Schemes Grid */
+.schemes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.scheme-item {
+  padding: 16px 20px;
+  background-color: var(--bg-basin);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80px;
+  outline: none;
+  box-shadow: inset 0px 1px 3px rgba(44, 36, 22, 0.04);
+  transition: transform 300ms var(--ease-temple);
+}
+
+.scheme-item:hover {
+  transform: translateY(-2px);
+}
+
+.scheme-name {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--color-ink);
+}
+
+.scheme-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.scheme-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--color-copper);
+  transition: width 600ms var(--ease-temple);
+}
+
+.scheme-item:hover .scheme-line::after {
+  width: 100%;
+}
+
+/* Scheme Modal */
+.scheme-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 36, 22, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.scheme-modal-content {
+  background-color: var(--bg-plaster);
+  border: 1.5px solid var(--color-border);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0px 16px 40px rgba(44, 36, 22, 0.12);
+}
+
+.scheme-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--color-copper);
+}
+
+.scheme-modal-content h4 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--color-ink);
+  margin-bottom: 16px;
+}
+
+.scheme-modal-content p {
+  font-size: 14px;
+  color: var(--color-earth);
+  margin-bottom: 24px;
+}
+
+.scheme-link {
+  font-size: 13px;
+  color: var(--color-copper);
+  text-decoration: none;
+}
+
+/* Incubators List */
+.incubators-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.incubator-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 300ms ease;
+}
+
+.incubator-item:hover {
+  background-color: rgba(245, 240, 232, 0.5);
+}
+
+.inc-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--color-ink);
+}
+
+.inc-tag {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--color-copper);
+}
+
+/* Connection Point Basin */
+.offering-connection {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.connection-vessel {
+  max-width: 650px;
+  padding: 48px 40px;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.connection-headline {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--color-ink);
+}
+
+.connection-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.connection-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-earth);
+  text-decoration: none;
+  transition: color 300ms ease;
+}
+
+.connection-link:hover {
+  color: var(--color-ink);
+}
+
+.connection-excel-note {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--color-copper);
+}
+
+/* ==========================================================================
+   FOOTER & DISCLAIMER
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-plaster);
+  padding: 60px 24px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-divider {
+  width: 60%;
+  max-width: 600px;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.disclaimer-text {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 10px;
+  color: var(--color-copper);
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+.footer-brand {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--color-ink);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .bell-question {
+    font-size: 28px;
+    margin-bottom: 80px;
+  }
+
+  .corridor-panel {
+    flex: 0 0 85vw;
+    padding: 28px;
+  }
+
+  .panel-quote {
+    font-size: 20px;
+  }
+
+  .niches-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vitrines-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .revelation-number {
+    font-size: 60px;
+  }
+
+  .schemes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .incubator-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .vitrines-grid {
+    grid-template-columns: 1fr;
+  }
+}
