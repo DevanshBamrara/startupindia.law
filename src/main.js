@@ -1,63 +1,33 @@
 /* ==========================================================================
    STARTUPINDIA.LAW — "THE SANCTUARY"
-   Master JavaScript Controller
+   Final Monochromatic Sacred Controller
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initFrame1Bell();
   initFrame2Corridor();
-  initFrame3Sanctum();
   initFrame4Gallery();
   initFrame5Wisdom();
-  initFrame6Philosophy();
   initFrame7Events();
   initFrame8Offering();
 });
 
 /* ==========================================================================
-   1. CUSTOM CURSOR CONTROLLER
+   1. QUIET CURSOR CONTROLLER
    ========================================================================== */
 function initCustomCursor() {
   const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-
-  if (!dot || !ring) return;
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
+  if (!dot) return;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
-  });
-
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-
-    ring.style.left = `${ringX}px`;
-    ring.style.top = `${ringY}px`;
-
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  const interactiveSelectors = 'a, button, input, textarea, [role="button"], .question-line, .niche-card, .scheme-item, .incubator-item, .vitrine-card, .event-card';
-
-  document.querySelectorAll(interactiveSelectors).forEach((el) => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    dot.style.left = `${e.clientX}px`;
+    dot.style.top = `${e.clientY}px`;
   });
 }
 
 /* ==========================================================================
-   2. FRAME 1: THE BELL — QUERY VESSEL & BREATHING REVEAL
+   2. FRAME 1: THE BELL
    ========================================================================== */
 function initFrame1Bell() {
   const vessel = document.getElementById('queryVessel');
@@ -89,8 +59,8 @@ function initFrame1Bell() {
 
     questionLines.forEach((line, index) => {
       line.style.opacity = '0';
-      line.style.transform = 'translateY(12px)';
-      line.style.transition = `opacity 500ms var(--ease-temple) ${index * 150}ms, transform 500ms var(--ease-temple) ${index * 150}ms, background-color 400ms var(--ease-temple)`;
+      line.style.transform = 'translateY(10px)';
+      line.style.transition = `opacity 500ms var(--ease-temple) ${index * 120}ms, transform 500ms var(--ease-temple) ${index * 120}ms`;
 
       setTimeout(() => {
         line.style.opacity = '1';
@@ -137,17 +107,49 @@ function initFrame1Bell() {
 }
 
 /* ==========================================================================
-   3. FRAME 2: THE CORRIDOR — HORIZONTAL TRUST SCROLL (8 PANELS)
+   3. FRAME 2: CORRIDOR WITH ARROWS & KEYBOARD NAVIGATION
    ========================================================================== */
 function initFrame2Corridor() {
   const track = document.getElementById('corridorTrack');
+  const prevBtn = document.getElementById('corridorPrev');
+  const nextBtn = document.getElementById('corridorNext');
   const tallyMarks = document.querySelectorAll('.tally-mark');
 
-  if (!track || !tallyMarks.length) return;
+  if (!track) return;
 
+  const getScrollStep = () => track.clientWidth;
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  // Keyboard Left / Right Navigation
+  window.addEventListener('keydown', (e) => {
+    const rect = track.getBoundingClientRect();
+    const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+    if (isInViewport || document.activeElement === track) {
+      if (e.key === 'ArrowLeft') {
+        track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+      } else if (e.key === 'ArrowRight') {
+        track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+      }
+    }
+  });
+
+  // Tally Marks Sync
   track.addEventListener('scroll', () => {
+    if (!tallyMarks.length) return;
     const scrollLeft = track.scrollLeft;
-    const itemWidth = track.clientWidth * 0.65;
+    const itemWidth = track.clientWidth;
     const activeIndex = Math.min(
       tallyMarks.length - 1,
       Math.max(0, Math.round(scrollLeft / itemWidth))
@@ -161,51 +163,10 @@ function initFrame2Corridor() {
       }
     });
   });
-
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  track.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-  });
-
-  track.addEventListener('mouseleave', () => { isDown = false; });
-  track.addEventListener('mouseup', () => { isDown = false; });
-
-  track.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    track.scrollLeft = scrollLeft - walk;
-  });
 }
 
 /* ==========================================================================
-   4. FRAME 3: THE SANCTUM — DIYA FLAME GLOW EFFECT
-   ========================================================================== */
-function initFrame3Sanctum() {
-  const nicheCards = document.querySelectorAll('.niche-card');
-
-  nicheCards.forEach((card) => {
-    const glow = card.querySelector('.diya-glow');
-    if (!glow) return;
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      glow.style.background = `radial-gradient(ellipse at ${x}px ${y}px, rgba(245, 230, 204, 0.8) 0%, rgba(245, 230, 204, 0) 70%)`;
-    });
-  });
-}
-
-/* ==========================================================================
-   5. FRAME 4: GALLERY OF BEINGS — MYSTERY DRAWERS
+   4. FRAME 4: GALLERY DRAWERS
    ========================================================================== */
 function initFrame4Gallery() {
   const mysteryLinks = document.querySelectorAll('.vitrine-mystery-link');
@@ -227,14 +188,14 @@ function initFrame4Gallery() {
       e.preventDefault();
       const parentDrawer = form.closest('.vitrine-drawer');
       if (parentDrawer) {
-        parentDrawer.innerHTML = '<p class="drawer-text" style="color:#8B6F47;">&#10003; Case study and full portfolio spreadsheet sent to your email.</p>';
+        parentDrawer.innerHTML = '<p class="drawer-text" style="color:#1A1A1A;">&#10003; Case study sent to your email.</p>';
       }
     });
   });
 }
 
 /* ==========================================================================
-   6. FRAME 5: THE WISDOM POOL — DATA COUNTER & SCROLL REVELATIONS
+   5. FRAME 5: WISDOM POOL REVELATIONS & COUNTER
    ========================================================================== */
 function initFrame5Wisdom() {
   const revelations = document.querySelectorAll('.wisdom-revelation');
@@ -250,7 +211,7 @@ function initFrame5Wisdom() {
 
             if (entry.target.id === 'rev-1' && !hasCounted && counterElement) {
               hasCounted = true;
-              animateMechanicalCounter(counterElement, 0, 113000, 2000);
+              animateCounter(counterElement, 0, 113000, 2000);
             }
           }
         });
@@ -263,7 +224,7 @@ function initFrame5Wisdom() {
     revelations.forEach((rev) => rev.classList.add('in-view'));
   }
 
-  function animateMechanicalCounter(element, start, end, duration) {
+  function animateCounter(element, start, end, duration) {
     const startTime = performance.now();
 
     function updateCounter(currentTime) {
@@ -283,23 +244,26 @@ function initFrame5Wisdom() {
 }
 
 /* ==========================================================================
-   7. FRAME 6: PHILOSOPHY TEAM REVEAL TOGGLE
-   ========================================================================== */
-function initFrame6Philosophy() {
-  const toggleBtn = document.getElementById('philosophyToggle');
-  const revealContent = document.getElementById('philosophyReveal');
-
-  if (toggleBtn && revealContent) {
-    toggleBtn.addEventListener('click', () => {
-      revealContent.classList.toggle('hidden');
-    });
-  }
-}
-
-/* ==========================================================================
-   8. FRAME 7: EVENTS & ENGAGEMENTS SLIDER & MODAL
+   6. FRAME 7: EVENTS SLIDER WITH ARROWS
    ========================================================================== */
 function initFrame7Events() {
+  const sliderTrack = document.getElementById('eventsSlider');
+  const prevBtn = document.getElementById('eventsPrev');
+  const nextBtn = document.getElementById('eventsNext');
+
+  if (sliderTrack) {
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        sliderTrack.scrollBy({ left: -320, behavior: 'smooth' });
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        sliderTrack.scrollBy({ left: 320, behavior: 'smooth' });
+      });
+    }
+  }
+
   const eventCards = document.querySelectorAll('.event-card');
   const modal = document.getElementById('eventModal');
   const modalTitle = document.getElementById('eventModalTitle');
@@ -371,7 +335,7 @@ function initFrame7Events() {
 }
 
 /* ==========================================================================
-   9. FRAME 8: THE OFFERING & SCHEME MODALS
+   7. FRAME 8: SCHEME MODALS
    ========================================================================== */
 function initFrame8Offering() {
   const schemeItems = document.querySelectorAll('.scheme-item');
