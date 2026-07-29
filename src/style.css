@@ -11,7 +11,6 @@
   --color-charcoal: #4A4A4A;  /* Secondary charcoal */
   --color-grey: #8C8C8C;      /* Tertiary whisper grey */
   --color-line: #E0E0E0;      /* Subtle border pencil line */
-  --color-hover: #2A2A2A;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -63,7 +62,7 @@ a, button, input, select, textarea, [role="button"] {
   transition: opacity 300ms ease;
 }
 
-/* 4. Strict Left-Aligned Axis & Layout Containers */
+/* 4. Layout Containers & Structural Axis */
 .hidden {
   display: none !important;
 }
@@ -86,7 +85,7 @@ a, button, input, select, textarea, [role="button"] {
   padding: 120px 24px;
 }
 
-/* Headings Typography Scale */
+/* Typography Scale */
 h1 {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -123,7 +122,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 1: THE BELL
+   FRAME 1: THE BELL (CENTERED LANDING EXCEPTION)
    ========================================================================== */
 .frame-bell {
   min-height: 100vh;
@@ -141,7 +140,6 @@ p, body {
   align-items: center;
 }
 
-/* Main landing question H1 - Centered Exception */
 .bell-question {
   text-align: center;
   font-size: 64px;
@@ -153,7 +151,7 @@ p, body {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .query-vessel {
@@ -185,7 +183,7 @@ p, body {
 
 .vessel-active-content {
   width: 100%;
-  text-align: left;
+  text-align: center;
 }
 
 .vessel-prompt {
@@ -198,7 +196,7 @@ p, body {
 .vessel-email-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
 }
 
@@ -218,6 +216,7 @@ p, body {
   color: var(--color-ink);
   padding: 8px 0;
   outline: none;
+  text-align: center;
 }
 
 .vessel-submit-btn {
@@ -260,13 +259,15 @@ p, body {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 12px 0;
+  padding: 12px 18px;
   border-bottom: 1px solid transparent;
+  border-radius: 6px;
   outline: none;
-  transition: border-color 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease;
 }
 
 .question-line:hover, .question-line:focus {
+  background-color: var(--bg-soft);
   border-color: var(--color-line);
 }
 
@@ -292,7 +293,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 2: THE CORRIDOR (HORIZONTAL SCROLL WITH ARROWS)
+   FRAME 2: THE CORRIDOR
    ========================================================================== */
 .frame-corridor {
   width: 100vw;
@@ -576,16 +577,31 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 5: THE WISDOM POOL
+   FRAME 5: THE WISDOM POOL (DEAD-CENTER ALIGNED SACRED REVERENCE)
    ========================================================================== */
 .frame-wisdom {
   background-color: var(--bg-canvas);
+  text-align: center;
+}
+
+.wisdom-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .wisdom-revelation {
   margin-bottom: 100px;
   opacity: 0;
   transition: opacity 800ms var(--ease-temple);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .wisdom-revelation.in-view {
@@ -599,66 +615,88 @@ p, body {
   line-height: 1;
   color: var(--color-ink);
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .revelation-text {
   font-size: 20px;
   color: var(--color-charcoal);
+  text-align: center;
 }
 
 .wisdom-whisper {
   font-size: 14px;
   color: var(--color-grey);
   margin-top: 16px;
+  text-align: center;
 }
 
 /* ==========================================================================
-   FRAME 6: THE PHILOSOPHY
+   FRAME 6: THE PHILOSOPHY (DEAD-CENTER ALIGNED BODHI TREE & STATEMENT)
    ========================================================================== */
 .frame-tree {
   background-color: var(--bg-canvas);
+  text-align: center;
+}
+
+.tree-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .bodhi-tree-wrapper {
   width: 100%;
   max-width: 400px;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
 }
 
 .bodhi-tree-svg {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 .tree-headline {
   font-size: 48px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .tree-philosophy-lines {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
   margin-bottom: 32px;
+  text-align: center;
 }
 
 .tree-subtext {
   font-size: 18px;
   color: var(--color-charcoal);
+  text-align: center;
 }
 
 .tree-advocate {
   font-size: 14px;
   color: var(--color-grey);
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .pamphlet-card {
   background-color: var(--bg-soft);
   border: 1px solid var(--color-line);
-  padding: 24px 32px;
+  padding: 28px 36px;
   border-radius: 4px;
   max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .pamphlet-quote {
@@ -666,6 +704,7 @@ p, body {
   font-style: italic;
   font-size: 18px;
   color: var(--color-ink);
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -980,18 +1019,22 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 9: FOOTER
+   FRAME 9: FOOTER (CENTER ALIGNED DIVIDER & DISCLAIMER)
    ========================================================================== */
 .site-footer {
   background-color: var(--bg-canvas);
   padding: 80px 24px 100px;
+  text-align: center;
 }
 
 .footer-content {
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 28px;
+  text-align: center;
 }
 
 .footer-divider {
@@ -1006,15 +1049,17 @@ p, body {
   font-size: 11px;
   color: var(--color-grey);
   line-height: 1.6;
+  text-align: center;
 }
 
 .footer-brand {
   font-size: 13px;
   color: var(--color-ink);
+  text-align: center;
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE BIGNESS ADAPTATIONS)
+   RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 768px) {
   .frame {

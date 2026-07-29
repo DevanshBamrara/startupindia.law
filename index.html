@@ -49,20 +49,20 @@
   </script>
 </head>
 <body>
-  <!-- Simple Monochromatic Cursor -->
+  <!-- Quiet Monochromatic Cursor -->
   <div class="custom-cursor-dot" id="cursorDot"></div>
 
   <main id="app">
 
-    <!-- FRAME 1: THE BELL -->
+    <!-- FRAME 1: THE BELL (CENTER-ALIGNED CEREMONIAL) -->
     <section class="frame frame-bell" id="frame-1">
       <div class="bell-container">
-        <!-- Main Question (Center Aligned Exception) -->
+        <!-- Main Question -->
         <h1 class="bell-question">
           "Ever had a great idea you wanted to build into a startup?"
         </h1>
 
-        <!-- The Query Vessel (Left Aligned Text Inside) -->
+        <!-- The Query Vessel -->
         <div class="query-vessel-wrapper">
           <div class="query-vessel" id="queryVessel" role="button" tabindex="0" aria-expanded="false" aria-label="Ask us how search basin">
             <span class="vessel-placeholder" id="vesselPlaceholder">Ask us how.</span>
@@ -115,7 +115,7 @@
       </div>
     </section>
 
-    <!-- FRAME 2: THE CORRIDOR (HORIZONTAL SCROLL WITH ARROWS) -->
+    <!-- FRAME 2: THE CORRIDOR (HORIZONTAL SCROLL WITH ARROWS - LEFT ALIGNED PANELS) -->
     <section class="frame frame-corridor" id="frame-2">
       <div class="corridor-wrapper">
         <div class="corridor-header">
@@ -465,9 +465,9 @@
       </div>
     </section>
 
-    <!-- FRAME 5: THE WISDOM POOL -->
+    <!-- FRAME 5: THE WISDOM POOL (CENTER-ALIGNED REVERENT KOAN) -->
     <section class="frame frame-wisdom" id="frame-5">
-      <div class="content-container">
+      <div class="wisdom-container">
         <!-- Revelation 1 -->
         <div class="wisdom-revelation" id="rev-1">
           <div class="revelation-number" id="counterNumber">0</div>
@@ -489,30 +489,29 @@
       </div>
     </section>
 
-    <!-- FRAME 6: THE PHILOSOPHY -->
+    <!-- FRAME 6: THE PHILOSOPHY (CENTER-ALIGNED BODHI TREE & STATEMENT) -->
     <section class="frame frame-tree" id="frame-6">
-      <div class="content-container">
+      <div class="tree-container">
         <div class="bodhi-tree-wrapper">
-          <svg class="bodhi-tree-svg" viewBox="0 0 500 400" fill="none">
-            <!-- High Contrast Monochromatic Bodhi Tree -->
-            <path d="M240 360 C240 300 220 270 210 230 C200 190 230 160 240 130 C250 100 230 70 200 40" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M260 360 C260 300 280 270 290 230 C300 190 270 160 260 130 C250 100 270 70 300 40" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M250 360 L250 150" stroke="#1A1A1A" stroke-width="1.5"/>
+          <svg class="bodhi-tree-svg" viewBox="0 0 500 380" fill="none">
+            <path d="M240 340 C240 280 220 250 210 210 C200 170 230 140 240 110 C250 80 230 50 200 20" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M260 340 C260 280 280 250 290 210 C300 170 270 140 260 110 C250 80 270 50 300 20" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M250 340 L250 130" stroke="#1A1A1A" stroke-width="1.5"/>
 
             <g stroke="#4A4A4A" stroke-width="1" fill="none">
-              <circle cx="90" cy="110" r="20"/>
-              <circle cx="130" cy="80" r="30"/>
-              <circle cx="180" cy="50" r="35"/>
-              <circle cx="250" cy="40" r="40"/>
-              <circle cx="320" cy="50" r="35"/>
-              <circle cx="370" cy="80" r="30"/>
-              <circle cx="410" cy="110" r="20"/>
+              <circle cx="90" cy="100" r="20"/>
+              <circle cx="130" cy="70" r="30"/>
+              <circle cx="180" cy="40" r="35"/>
+              <circle cx="250" cy="30" r="40"/>
+              <circle cx="320" cy="40" r="35"/>
+              <circle cx="370" cy="70" r="30"/>
+              <circle cx="410" cy="100" r="20"/>
             </g>
 
             <g class="seated-figure" fill="#1A1A1A">
-              <circle cx="250" cy="315" r="8"/>
-              <path d="M240 360 C240 335 244 325 250 325 C256 325 260 335 260 360 Z"/>
-              <path d="M228 360 C230 348 238 343 250 343 C262 343 270 348 272 360 Z"/>
+              <circle cx="250" cy="295" r="8"/>
+              <path d="M240 340 C240 315 244 305 250 305 C256 305 260 315 260 340 Z"/>
+              <path d="M228 340 C230 328 238 323 250 323 C262 323 270 328 272 340 Z"/>
             </g>
           </svg>
         </div>
@@ -761,10 +760,10 @@
       </div>
     </section>
 
-    <!-- FRAME 9: FOOTER -->
+    <!-- FRAME 9: FOOTER (CENTER ALIGNED DIVIDER & DISCLAIMER) -->
     <footer class="site-footer">
       <div class="footer-divider"></div>
-      <div class="content-container footer-content">
+      <div class="footer-content">
         <p class="disclaimer-text">
           This website provides general information only and does not constitute legal advice. No attorney-client relationship is created by viewing this site, submitting a query, or receiving general responses. Legal outcomes depend on specific facts and applicable laws, which vary across jurisdictions. For formal engagement, a separate retainer agreement is required. We serve clients globally with a primary focus on Indian law. Nothing herein is intended as solicitation in any jurisdiction where this website does not comply with applicable laws and regulations. The case studies and outcomes referenced are illustrative; past results do not guarantee future outcomes. All inquiries are treated with confidentiality. &copy; Office of Adv. Ashish Gupta.
         </p>
