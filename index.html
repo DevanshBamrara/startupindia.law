@@ -7,7 +7,13 @@
   <meta name="description" content="Trusted legal counsel to Shark Tank India startups, IIT Bombay innovators, and ₹100Cr+ companies. Startup incorporation, IP protection, and technology law — India, US, and globally. Office of Adv. Ashish Gupta.">
   <meta name="keywords" content="startup legal advisor India, IP lawyer for startups, Shark Tank India legal counsel, startup incorporation specialist, technology law firm India, USPTO qualified India, IIT Bombay startup legal advisor">
   
-  <!-- Preload Critical Fonts -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Startup India Law | Legal Counsel for Startups, IP & Technology">
+  <meta property="og:description" content="Trusted legal counsel to Shark Tank India startups, IIT Bombay innovators, and ₹100Cr+ companies. Office of Adv. Ashish Gupta.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://startupindia.law">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,7 +28,7 @@
     "name": "StartupIndia.Law — The Office of Adv. Ashish Gupta",
     "description": "Premier legal advisory, entity architecture, IP fortification, and investment readiness counsel for startups across India, the United States, and global jurisdictions.",
     "url": "https://startupindia.law",
-    "telephone": ["+919867975593", "+917986587414"],
+    "telephone": "+917827963285",
     "email": "info@startupindia.law",
     "address": {
       "@type": "PostalAddress",
@@ -46,66 +52,158 @@
   <!-- Quiet Monochromatic Cursor -->
   <div class="custom-cursor-dot" id="cursorDot"></div>
 
+  <!-- MANDATORY STATUTORY LEGAL DISCLAIMER MODAL (BAR COUNCIL & ADVOCATES ACT 1961) -->
+  <div class="legal-disclaimer-overlay" id="disclaimerOverlay" role="dialog" aria-modal="true" aria-labelledby="disclaimerTitle">
+    <div class="legal-disclaimer-modal">
+      <div class="disclaimer-header">
+        <span class="disclaimer-badge">STATUTORY LEGAL NOTICE</span>
+        <h2 class="disclaimer-title" id="disclaimerTitle">DISCLAIMER</h2>
+        <p class="disclaimer-lead">
+          By clicking <strong>"I AGREE"</strong>, you acknowledge and confirm that:
+        </p>
+      </div>
+
+      <div class="disclaimer-scroll-body">
+        <ol class="disclaimer-points">
+          <li>
+            You are accessing this website on your own initiative and are seeking information about StartupIndia.law for your personal or professional use.
+          </li>
+          <li>
+            The information contained on this website is provided solely for general informational purposes and should not be construed as legal advice, legal opinion, or a substitute for obtaining advice from a qualified legal professional.
+          </li>
+          <li>
+            Your use of this website, including the transmission, receipt, or exchange of information through it, does not create an attorney-client, advocate-client, fiduciary, consultant-client, or any other professional relationship with StartupIndia.law or any of its members, affiliates, or representatives.
+          </li>
+          <li>
+            Nothing contained on this website constitutes or is intended to constitute advertising, solicitation, inducement, invitation, or personal communication for legal work, consultancy, or professional engagement.
+          </li>
+          <li>
+            This website has been developed in accordance with the applicable professional and ethical obligations governing legal practitioners in India, including the Advocates Act, 1961 and the Bar Council of India Rules. Any references to international laws, regulations, or cross-border legal frameworks are provided solely for informational and educational purposes.
+          </li>
+          <li>
+            While reasonable efforts are made to ensure that the information on this website is accurate and up to date, StartupIndia.law makes no representation or warranty, express or implied, regarding the accuracy, completeness, reliability, or suitability of the information contained herein.
+          </li>
+          <li>
+            You should not act or refrain from acting based on any information available on this website without first obtaining independent legal or professional advice appropriate to your specific facts and jurisdiction.
+          </li>
+          <li>
+            Any communication with StartupIndia.law through this website, including via contact forms, email, or other electronic means, does not create any professional relationship or obligation to provide legal or consulting services unless expressly agreed to in writing.
+          </li>
+        </ol>
+        <p class="disclaimer-conclusion">
+          By clicking <strong>"I AGREE"</strong>, you confirm that you have read, understood, and accepted this Disclaimer and wish to proceed to the website.
+        </p>
+      </div>
+
+      <div class="disclaimer-footer-actions">
+        <button type="button" class="btn-disclaimer-agree" id="btnDisclaimerAgree">
+          I AGREE &ndash; Enter Website
+        </button>
+        <button type="button" class="btn-disclaimer-disagree" id="btnDisclaimerDisagree">
+          I DISAGREE &ndash; Exit Website
+        </button>
+      </div>
+    </div>
+  </div>
+
   <main id="app">
 
-    <!-- FRAME 1: HERO SECTION — "ORBIT OF QUESTIONS" -->
-    <section class="frame frame-hero" id="frame-1">
-      <!-- Main Heading H1 -->
-      <h1 class="hero-heading">
-        "Ever had a great idea you wanted to build into a startup?"
-      </h1>
+    <!-- FRAME 1: THE BELL (CENTER-ALIGNED CEREMONIAL) -->
+    <section class="frame frame-bell" id="frame-1">
+      <div class="bell-container">
+        <!-- Main Question -->
+        <h1 class="bell-question">
+          "Ever had a great idea you wanted to build into a startup?"
+        </h1>
 
-      <!-- Constellation Container -->
-      <div class="constellation-container" id="constellationContainer">
-        
-        <!-- Anchored Central Input Vessel -->
-        <div class="central-vessel-wrapper" id="vesselWrapper">
-          <div class="central-vessel-box">
-            <input type="text" class="central-vessel-input" id="mainVesselInput" placeholder="Or type your own question..." aria-label="Type your question for Startup India Law">
+        <!-- The Flexible Query Basin Wrapper -->
+        <div class="query-vessel-wrapper">
+          
+          <!-- INITIAL IDLE BAR -->
+          <div class="query-vessel" id="queryVessel" role="button" tabindex="0" aria-expanded="false" aria-label="Ask us how search basin">
+            <span class="vessel-placeholder" id="vesselPlaceholder">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              Ask us how...
+            </span>
           </div>
 
-          <!-- Email Reveal Container -->
-          <div class="email-reveal-container hidden" id="emailRevealContainer">
-            <p class="selected-question-text" id="selectedQuestionText"></p>
-            <form class="email-reveal-form" id="emailForm">
-              <input type="email" class="email-reveal-input" id="userEmailInput" placeholder="Your email address" required aria-label="Your email address">
-              <button type="submit" class="email-submit-btn" aria-label="Send inquiry">&rarr; Send</button>
+          <!-- STEP 1: FLEXIBLE QUESTION INPUT & SUGGESTIONS -->
+          <div class="vessel-question-step hidden" id="vesselQuestionStep">
+            <p class="vessel-step-label">WHAT WOULD YOU LIKE TO BUILD OR PROTECT?</p>
+            <form class="vessel-question-form" id="vesselQuestionForm">
+              <div class="vessel-input-group">
+                <input type="text" class="vessel-text-input" id="customQuestionInput" placeholder="Type your custom question here..." required autocomplete="off">
+                <button type="submit" class="vessel-action-btn" id="btnNextToEmail" aria-label="Next to email step">
+                  <span class="arrow-icon">Next &rarr;</span>
+                </button>
+              </div>
             </form>
-            <p class="email-reveal-subnote">We respond within a sunrise. No newsletters.</p>
+
+            <div class="revealed-questions" id="revealedQuestions">
+              <span class="suggestions-label">OR CHOOSE A COMMON INQUIRY:</span>
+              <div class="questions-grid">
+                <div class="question-line" tabindex="0" data-question="How do I protect my idea before sharing it?">
+                  <span class="ink-circle"></span>
+                  <span class="question-text">"How do I protect my idea before sharing it?"</span>
+                </div>
+                <div class="question-line" tabindex="0" data-question="Where should I incorporate — India, US, or Singapore?">
+                  <span class="ink-circle"></span>
+                  <span class="question-text">"Where should I incorporate — India, US, or Singapore?"</span>
+                </div>
+                <div class="question-line" tabindex="0" data-question="What legal compliance does a first-year startup need?">
+                  <span class="ink-circle"></span>
+                  <span class="question-text">"What legal compliance does a first-year startup need?"</span>
+                </div>
+                <div class="question-line" tabindex="0" data-question="How do I structure a founder agreement that survives conflict?">
+                  <span class="ink-circle"></span>
+                  <span class="question-text">"How do I structure a founder agreement that survives conflict?"</span>
+                </div>
+                <div class="question-line" tabindex="0" data-question="How do I prepare for Shark Tank or investor due diligence?">
+                  <span class="ink-circle"></span>
+                  <span class="question-text">"How do I prepare for Shark Tank or investor due diligence?"</span>
+                </div>
+                <div class="question-line" tabindex="0" data-question="What is IP valuation and when do I need it?">
+                  <span class="ink-circle"></span>
+                  <span class="question-text">"What is IP valuation and when do I need it?"</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Submission Confirmation -->
+          <!-- STEP 2: EMAIL STEP -->
+          <div class="vessel-email-step hidden" id="vesselEmailStep">
+            <div class="question-preview-box">
+              <span class="preview-tag">YOUR INQUIRY</span>
+              <p class="preview-text" id="previewQuestionText">"How do I protect my idea before sharing it?"</p>
+              <button type="button" class="btn-change-question" id="btnChangeQuestion">&larr; Edit question</button>
+            </div>
+
+            <p class="vessel-prompt">Leave your email &mdash; Adv. Ashish Gupta responds within a sunrise.</p>
+            <form class="vessel-email-form" id="vesselEmailForm">
+              <div class="vessel-input-group">
+                <input type="email" class="vessel-text-input" id="vesselEmailInput" placeholder="your.name@domain.com" required>
+                <button type="submit" class="vessel-action-btn" aria-label="Submit inquiry">
+                  <span class="arrow-icon">Submit &rarr;</span>
+                </button>
+              </div>
+              <p class="vessel-subnote">Strict legal confidentiality maintained. No newsletters.</p>
+            </form>
+          </div>
+
+          <!-- STEP 3: SACRED CONFIRMATION -->
           <div class="vessel-confirmation hidden" id="vesselConfirmation">
-            <p class="confirm-text">Thank you. We'll be in your inbox soon.</p>
+            <span class="confirm-symbol">&#10003;</span>
+            <p class="confirm-text">Your inquiry is received in quiet confidence. Expect our reply within a sunrise.</p>
           </div>
-        </div>
 
-        <!-- Floating Questions (6 Button Pills) -->
-        <div class="pills-stack" id="pillsStack">
-          <button class="floating-pill pill-1" data-pill="1" data-question="How do I protect my idea?">
-            How do I protect my idea?
-          </button>
-          <button class="floating-pill pill-2" data-pill="2" data-question="Where should I incorporate?">
-            Where should I incorporate?
-          </button>
-          <button class="floating-pill pill-3" data-pill="3" data-question="What compliance do I need?">
-            What compliance do I need?
-          </button>
-          <button class="floating-pill pill-4" data-pill="4" data-question="Founder agreement that survives?">
-            Founder agreement that survives?
-          </button>
-          <button class="floating-pill pill-5" data-pill="5" data-question="Ready for Shark Tank diligence?">
-            Ready for Shark Tank diligence?
-          </button>
-          <button class="floating-pill pill-6" data-pill="6" data-question="IP valuation — when and why?">
-            IP valuation — when and why?
-          </button>
         </div>
-
       </div>
     </section>
 
-    <!-- FRAME 2: THE CORRIDOR -->
+    <!-- FRAME 2: THE CORRIDOR (HORIZONTAL SCROLL WITH ARROWS - LEFT ALIGNED PANELS) -->
     <section class="frame frame-corridor" id="frame-2">
       <div class="corridor-wrapper">
         <div class="corridor-header">
@@ -206,6 +304,7 @@
           </article>
         </div>
 
+        <!-- Tally Mark Progress Bar -->
         <div class="corridor-progress">
           <div class="tally-mark active" data-index="0"></div>
           <div class="tally-mark" data-index="1"></div>
@@ -227,31 +326,37 @@
         </h2>
 
         <div class="niches-grid">
+          <!-- Niche 1 -->
           <article class="niche-card">
             <h3 class="niche-title">Startup Incorporation &amp; Jurisdiction</h3>
             <p class="niche-subtitle">India, US (Delaware), Singapore — entity architecture that serves your funding goals.</p>
           </article>
 
+          <!-- Niche 2 -->
           <article class="niche-card">
             <h3 class="niche-title">Intellectual Property Strategy</h3>
             <p class="niche-subtitle">Patents, trademarks, trade secrets, and IP portfolio management.</p>
           </article>
 
+          <!-- Niche 3 -->
           <article class="niche-card">
             <h3 class="niche-title">IP Valuation &amp; Transactions</h3>
             <p class="niche-subtitle">Finance-aware IP valuation, licensing, brokerage, and technology transfer.</p>
           </article>
 
+          <!-- Niche 4 -->
           <article class="niche-card">
             <h3 class="niche-title">Founder Agreements &amp; Equity</h3>
             <p class="niche-subtitle">Agreements that survive fallout. Vesting, cliffs, and dispute resolution.</p>
           </article>
 
+          <!-- Niche 5 -->
           <article class="niche-card">
             <h3 class="niche-title">Investment &amp; Due Diligence Readiness</h3>
             <p class="niche-subtitle">Shark Tank-ready, investor-ready, diligence-proof.</p>
           </article>
 
+          <!-- Niche 6 -->
           <article class="niche-card">
             <h3 class="niche-title">Technology &amp; Media Law</h3>
             <p class="niche-subtitle">Privacy law, digital rights, media, entertainment, and content creator advisory.</p>
@@ -268,6 +373,7 @@
         </h2>
 
         <div class="vitrines-grid">
+          <!-- Vitrine 1: AIRTH -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -297,6 +403,7 @@
             </div>
           </article>
 
+          <!-- Vitrine 2: ZERODOR -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -325,6 +432,7 @@
             </div>
           </article>
 
+          <!-- Vitrine 3: HORNBACK -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -354,6 +462,7 @@
             </div>
           </article>
 
+          <!-- Vitrine 4: LIGER MOBILITY -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -383,6 +492,7 @@
             </div>
           </article>
 
+          <!-- Vitrine 5: METADOME -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -411,6 +521,7 @@
             </div>
           </article>
 
+          <!-- Vitrine 6: iBREASTEXAM -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -442,19 +553,22 @@
       </div>
     </section>
 
-    <!-- FRAME 5: THE WISDOM POOL -->
+    <!-- FRAME 5: THE WISDOM POOL (CENTER-ALIGNED REVERENT KOAN) -->
     <section class="frame frame-wisdom" id="frame-5">
       <div class="wisdom-container">
+        <!-- Revelation 1 -->
         <div class="wisdom-revelation" id="rev-1">
           <div class="revelation-number" id="counterNumber">0</div>
           <p class="revelation-text">DPIIT-recognized startups in India.</p>
         </div>
 
+        <!-- Revelation 2 -->
         <div class="wisdom-revelation" id="rev-2">
           <div class="revelation-number">~90%</div>
           <p class="revelation-text">Do not survive their fifth year.</p>
         </div>
 
+        <!-- Revelation 3 -->
         <div class="wisdom-revelation" id="rev-3">
           <div class="revelation-number">2%</div>
           <p class="revelation-text">Become unicorns.</p>
@@ -463,7 +577,7 @@
       </div>
     </section>
 
-    <!-- FRAME 6: THE PHILOSOPHY -->
+    <!-- FRAME 6: THE PHILOSOPHY (CENTER-ALIGNED BODHI TREE & STATEMENT) -->
     <section class="frame frame-tree" id="frame-6">
       <div class="tree-container">
         <div class="bodhi-tree-wrapper">
@@ -518,6 +632,7 @@
         </div>
 
         <div class="events-slider-track" id="eventsSlider">
+          <!-- Event 1 -->
           <article class="event-card" data-event="sine">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -530,6 +645,7 @@
             <p class="event-line">Technology Law Strategies for deep-tech startups.</p>
           </article>
 
+          <!-- Event 2 -->
           <article class="event-card" data-event="boeing">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -542,6 +658,7 @@
             <p class="event-line">IP fundamentals for early-stage entrepreneurs — aerospace and defense.</p>
           </article>
 
+          <!-- Event 3 -->
           <article class="event-card" data-event="roorkee">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -554,6 +671,7 @@
             <p class="event-line">Innovation, IPR, and Entrepreneurship Development.</p>
           </article>
 
+          <!-- Event 4 -->
           <article class="event-card" data-event="cii">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -566,6 +684,7 @@
             <p class="event-line">IPR awareness for MSMEs, startups, and technopreneurs.</p>
           </article>
 
+          <!-- Event 5 -->
           <article class="event-card" data-event="les">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -578,6 +697,7 @@
             <p class="event-line">IP Drives the Bottom Line.</p>
           </article>
 
+          <!-- Event 6 -->
           <article class="event-card" data-event="iic">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -590,6 +710,7 @@
             <p class="event-line">Building innovation ecosystems in higher education.</p>
           </article>
 
+          <!-- Event 7 -->
           <article class="event-card" data-event="its">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -616,73 +737,86 @@
       </div>
     </section>
 
-    <!-- FRAME 8: CONTACT & OFFERINGS -->
+    <!-- FRAME 8: ADVISORY & CONTACT -->
     <section class="frame frame-offering" id="frame-8">
       <div class="content-container">
+        <!-- Section A: Government Grant & Capital Counsel -->
         <div class="offering-section">
-          <h3 class="offering-heading">Government schemes.</h3>
-          <div class="schemes-grid">
-            <div class="scheme-item" data-scheme="sisfs">
-              <span class="scheme-name">Startup India Seed Fund Scheme (SISFS)</span>
-              <span class="scheme-line"></span>
-            </div>
-            <div class="scheme-item" data-scheme="gujarat">
-              <span class="scheme-name">Gujarat Startup &amp; Innovation Scheme</span>
-              <span class="scheme-line"></span>
-            </div>
-            <div class="scheme-item" data-scheme="msme">
-              <span class="scheme-name">MSME Innovative Scheme</span>
-              <span class="scheme-line"></span>
-            </div>
-            <div class="scheme-item" data-scheme="dpiit">
-              <span class="scheme-name">DPIIT Patent Fee Rebate</span>
-              <span class="scheme-line"></span>
-            </div>
-            <div class="scheme-item" data-scheme="samridh">
-              <span class="scheme-name">SAMRIDH Scheme</span>
-              <span class="scheme-line"></span>
-            </div>
-            <div class="scheme-item" data-scheme="nidhi">
-              <span class="scheme-name">NIDHI-Seed Support System</span>
-              <span class="scheme-line"></span>
-            </div>
-          </div>
-          <div class="scheme-modal hidden" id="schemeModal">
-            <div class="scheme-modal-content">
-              <button class="scheme-modal-close" id="schemeModalClose">&times;</button>
-              <h4 id="schemeModalTitle">Scheme Title</h4>
-              <p id="schemeModalDesc">Scheme Description</p>
-              <a href="#" target="_blank" rel="noopener" id="schemeModalLink" class="scheme-link">Official Portal &rarr;</a>
-            </div>
+          <h2 class="offering-main-title">Government Grants &amp; Policy Counsel</h2>
+          <p class="offering-lead-text">
+            "We structure eligibility, engineer compliant grant applications, and unlock non-dilutive government capital, tax exemptions, and statutory subsidies for high-growth ventures."
+          </p>
+
+          <div class="advisory-pillars-grid">
+            <article class="pillar-card">
+              <h3 class="pillar-title">Non-Dilutive Seed Grants</h3>
+              <p class="pillar-desc">
+                End-to-end legal positioning &amp; filing for Startup India Seed Fund (SISFS), NIDHI-SSS, and SAMRIDH schemes — securing up to &#8377;1 Crore in non-dilutive capital and convertible debentures.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <h3 class="pillar-title">DPIIT &amp; Statutory Tax Rebates</h3>
+              <p class="pillar-desc">
+                80% patent fee subsidy, 50% trademark rebate, fast-tracked IP examination, and Section 56(2)(viib) angel tax exemption legal architecture under official DPIIT recognition.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <h3 class="pillar-title">State Innovation Policies</h3>
+              <p class="pillar-desc">
+                Complete grant facilitation across Gujarat Startup Scheme, MSME Innovative Scheme, and regional state R&amp;D subsidies for hardware, biotech, and software founders.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <h3 class="pillar-title">Grant Governance &amp; Audit Defense</h3>
+              <p class="pillar-desc">
+                Institutional fund utilization legal frameworks, contractual compliance, and audit readiness to protect government grants from forfeiture or clawback.
+              </p>
+            </article>
           </div>
         </div>
 
+        <!-- Section B: Incubators & Institutional Mentorship -->
         <div class="offering-section">
-          <h3 class="offering-heading">Incubators list.</h3>
-          <ul class="incubators-list">
-            <li class="incubator-item">
-              <span class="inc-name">SINE — IIT Bombay</span>
-              <span class="inc-tag">Deep-Tech &amp; Engineering</span>
-            </li>
-            <li class="incubator-item">
-              <span class="inc-name">CIIE.CO — IIM Ahmedabad</span>
-              <span class="inc-tag">Commercialization &amp; Impact</span>
-            </li>
-            <li class="incubator-item">
-              <span class="inc-name">T-Hub — Hyderabad</span>
-              <span class="inc-tag">Scale &amp; Enterprise</span>
-            </li>
-            <li class="incubator-item">
-              <span class="inc-name">NSRCEL — IIM Bangalore</span>
-              <span class="inc-tag">Venture Growth</span>
-            </li>
-            <li class="incubator-item">
-              <span class="inc-name">iCreate — Gujarat</span>
-              <span class="inc-tag">Hardware &amp; EV Tech</span>
-            </li>
-          </ul>
+          <h2 class="offering-main-title">Incubators &amp; Institutional Mentorship</h2>
+          <p class="offering-lead-text">
+            "Bridging breakthrough innovations with premier academic incubators, university tech transfer labs, and global venture acceleration networks."
+          </p>
+
+          <div class="advisory-pillars-grid">
+            <article class="pillar-card">
+              <h3 class="pillar-title">Premier Academic Incubators</h3>
+              <p class="pillar-desc">
+                Deep legal advisory &amp; mentorship integration with SINE (IIT Bombay), CIIE.CO (IIM Ahmedabad), and NSRCEL (IIM Bangalore) for deep-tech &amp; commercial venture scaling.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <h3 class="pillar-title">Hardware &amp; EV Tech Ecosystems</h3>
+              <p class="pillar-desc">
+                Specialized legal architecture for hardware, EV, and deep-tech prototyping at iCreate Gujarat and T-Hub Hyderabad — covering lab access and IP defense.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <h3 class="pillar-title">University Tech Transfer &amp; R&amp;D</h3>
+              <p class="pillar-desc">
+                Licensing university patents, faculty spin-off agreements, joint R&amp;D contracts, and institutional equity assignment across premier IITs and IISc.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <h3 class="pillar-title">Venture Accelerator Readiness</h3>
+              <p class="pillar-desc">
+                Term sheet negotiation, institutional due diligence, and capital readiness for leading global acceleration cohorts including Techstars and Boeing BUILD.
+              </p>
+            </article>
+          </div>
         </div>
 
+        <!-- Section C: Contact Details -->
         <div class="offering-connection">
           <div class="connection-vessel">
             <h3 class="connection-headline">Contact</h3>
@@ -695,11 +829,7 @@
 
               <div class="contact-block">
                 <span class="contact-label">PHONE</span>
-                <div class="phone-group">
-                  <a href="tel:+919867975593" class="contact-value">+91 9867 975 593</a>
-                  <span class="contact-sep">|</span>
-                  <a href="tel:+917986587414" class="contact-value">+91 7986 587 414</a>
-                </div>
+                <a href="tel:+917827963285" class="contact-value">+91 78279 63285</a>
               </div>
 
               <div class="contact-block full-width">
@@ -713,18 +843,13 @@
                 <span class="contact-label">LOCATIONS</span>
                 <p class="contact-location-text">Mumbai | Delhi-NCR</p>
               </div>
-
-              <div class="contact-block">
-                <span class="contact-label">CALENDAR</span>
-                <a href="#schedule" class="contact-value schedule-link" id="scheduleBtn">Schedule a conversation.</a>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FRAME 9: FOOTER -->
+    <!-- FRAME 9: FOOTER (CENTER ALIGNED DIVIDER & DISCLAIMER) -->
     <footer class="site-footer">
       <div class="footer-divider"></div>
       <div class="footer-content">

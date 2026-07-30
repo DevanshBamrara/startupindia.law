@@ -1,17 +1,53 @@
 /* ==========================================================================
    STARTUPINDIA.LAW — "THE SANCTUARY"
-   Final Monochromatic Sacred Controller & Hero Orbit Mechanics
+   Final Monochromatic Sacred Controller
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLegalDisclaimerModal();
   initCustomCursor();
-  initHeroOrbit();
+  initFrame1Bell();
   initFrame2Corridor();
   initFrame4Gallery();
   initFrame5Wisdom();
   initFrame7Events();
   initFrame8Offering();
 });
+
+/* ==========================================================================
+   0. STATUTORY LEGAL DISCLAIMER MODAL CONTROLLER
+   ========================================================================== */
+function initLegalDisclaimerModal() {
+  const overlay = document.getElementById('disclaimerOverlay');
+  const btnAgree = document.getElementById('btnDisclaimerAgree');
+  const btnDisagree = document.getElementById('btnDisclaimerDisagree');
+
+  if (!overlay) return;
+
+  const hasAgreed = sessionStorage.getItem('startupIndiaLaw_disclaimerAgreed');
+
+  if (!hasAgreed) {
+    overlay.classList.remove('disclaimer-hidden');
+    document.body.style.overflow = 'hidden';
+  } else {
+    overlay.classList.add('disclaimer-hidden');
+    document.body.style.overflow = '';
+  }
+
+  if (btnAgree) {
+    btnAgree.addEventListener('click', () => {
+      sessionStorage.setItem('startupIndiaLaw_disclaimerAgreed', 'true');
+      overlay.classList.add('disclaimer-hidden');
+      document.body.style.overflow = '';
+    });
+  }
+
+  if (btnDisagree) {
+    btnDisagree.addEventListener('click', () => {
+      window.location.href = 'https://www.google.com';
+    });
+  }
+}
 
 /* ==========================================================================
    1. QUIET CURSOR CONTROLLER
@@ -27,81 +63,108 @@ function initCustomCursor() {
 }
 
 /* ==========================================================================
-   2. HERO SECTION — "ORBIT OF QUESTIONS" MECHANICS
+   2. FRAME 1: THE BELL & FLEXIBLE INQUIRY BASIN CONTROLLER
    ========================================================================== */
-function initHeroOrbit() {
-  const mainInput = document.getElementById('mainVesselInput');
-  const pillsStack = document.getElementById('pillsStack');
-  const pills = document.querySelectorAll('.floating-pill');
-  const emailRevealContainer = document.getElementById('emailRevealContainer');
-  const selectedQuestionText = document.getElementById('selectedQuestionText');
-  const userEmailInput = document.getElementById('userEmailInput');
-  const emailForm = document.getElementById('emailForm');
-  const vesselConfirmation = document.getElementById('vesselConfirmation');
+function initFrame1Bell() {
+  const queryVessel = document.getElementById('queryVessel');
+  const questionStep = document.getElementById('vesselQuestionStep');
+  const emailStep = document.getElementById('vesselEmailStep');
+  const confirmation = document.getElementById('vesselConfirmation');
 
-  let activeQuestion = '';
+  const customQuestionInput = document.getElementById('customQuestionInput');
+  const questionForm = document.getElementById('vesselQuestionForm');
+  const questionLines = document.querySelectorAll('.question-line');
 
-  // Clicking any floating pill selects the question
-  pills.forEach((pill) => {
-    pill.addEventListener('click', () => {
-      const qText = pill.getAttribute('data-question');
-      selectQuestion(qText);
+  const previewQuestionText = document.getElementById('previewQuestionText');
+  const btnChangeQuestion = document.getElementById('btnChangeQuestion');
+  const emailForm = document.getElementById('vesselEmailForm');
+  const emailInput = document.getElementById('vesselEmailInput');
+
+  if (!queryVessel) return;
+
+  // 1. Click / Keydown on initial bar -> Open Question Step
+  queryVessel.addEventListener('click', openQuestionStep);
+  queryVessel.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openQuestionStep();
+    }
+  });
+
+  function openQuestionStep() {
+    queryVessel.classList.add('hidden');
+    questionStep.classList.remove('hidden');
+    if (customQuestionInput) {
+      customQuestionInput.focus();
+    }
+  }
+
+  // 2. Click / Select suggestion pill -> Populate & proceed to Email Step
+  questionLines.forEach((line) => {
+    line.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const qText = line.getAttribute('data-question');
+      if (customQuestionInput) {
+        customQuestionInput.value = qText;
+      }
+      proceedToEmailStep(qText);
+    });
+
+    line.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const qText = line.getAttribute('data-question');
+        if (customQuestionInput) {
+          customQuestionInput.value = qText;
+        }
+        proceedToEmailStep(qText);
+      }
     });
   });
 
-  // Typing in main input & pressing Enter triggers selection
-  if (mainInput) {
-    mainInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && mainInput.value.trim() !== '') {
-        e.preventDefault();
-        selectQuestion(mainInput.value.trim());
+  // 3. Submit custom question form -> Proceed to Email Step
+  if (questionForm) {
+    questionForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const userQ = customQuestionInput ? customQuestionInput.value.trim() : '';
+      if (userQ) {
+        proceedToEmailStep(userQ);
       }
     });
   }
 
-  function selectQuestion(question) {
-    activeQuestion = question;
-    if (mainInput) mainInput.value = question;
-    if (selectedQuestionText) {
-      selectedQuestionText.textContent = `Regarding "${question}" — leave your email below:`;
+  function proceedToEmailStep(qText) {
+    questionStep.classList.add('hidden');
+    emailStep.classList.remove('hidden');
+
+    if (previewQuestionText) {
+      previewQuestionText.textContent = `"${qText}"`;
     }
 
-    if (pillsStack) pillsStack.classList.add('dimmed');
-    if (emailRevealContainer) emailRevealContainer.classList.remove('hidden');
-    if (userEmailInput) userEmailInput.focus();
+    if (emailInput) {
+      emailInput.focus();
+    }
   }
 
-  // Handle email submission
-  if (emailForm) {
-    emailForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (emailRevealContainer) emailRevealContainer.classList.add('hidden');
-      if (vesselConfirmation) vesselConfirmation.classList.remove('hidden');
-
-      // Auto-reset after 5 seconds
-      setTimeout(() => {
-        if (vesselConfirmation) vesselConfirmation.classList.add('hidden');
-        if (mainInput) mainInput.value = '';
-        if (pillsStack) pillsStack.classList.remove('dimmed');
-      }, 5000);
+  // 4. Change question button -> Return to Question Step
+  if (btnChangeQuestion) {
+    btnChangeQuestion.addEventListener('click', () => {
+      emailStep.classList.add('hidden');
+      questionStep.classList.remove('hidden');
+      if (customQuestionInput) {
+        customQuestionInput.focus();
+      }
     });
   }
 
-  // Minimal Idle Pulse Timer — 12 lines
-  let idleTimer;
-  const resetEvents = ['mousemove', 'click', 'scroll', 'touchstart'];
-  resetEvents.forEach((evt) => document.addEventListener(evt, resetIdleTimer));
-
-  function resetIdleTimer() {
-    clearTimeout(idleTimer);
-    pills.forEach((p) => (p.style.animationPlayState = 'running'));
-    idleTimer = setTimeout(() => {
-      if (!pills.length) return;
-      const randomPill = pills[Math.floor(Math.random() * pills.length)];
-      randomPill.style.animation = 'breathe 3s ease-in-out 1';
-    }, 20000);
+  // 5. Submit email form -> Show confirmation
+  if (emailForm) {
+    emailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      emailStep.classList.add('hidden');
+      confirmation.classList.remove('hidden');
+    });
   }
-  resetIdleTimer();
 }
 
 /* ==========================================================================
@@ -129,6 +192,7 @@ function initFrame2Corridor() {
     });
   }
 
+  // Keyboard Left / Right Navigation
   window.addEventListener('keydown', (e) => {
     const rect = track.getBoundingClientRect();
     const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -142,6 +206,7 @@ function initFrame2Corridor() {
     }
   });
 
+  // Tally Marks Sync
   track.addEventListener('scroll', () => {
     if (!tallyMarks.length) return;
     const scrollLeft = track.scrollLeft;
@@ -207,7 +272,7 @@ function initFrame5Wisdom() {
 
             if (entry.target.id === 'rev-1' && !hasCounted && counterElement) {
               hasCounted = true;
-              animateCounter(counterElement, 0, 113000, 2000);
+              animateCounter(counterElement, 0, 200000, 2000);
             }
           }
         });

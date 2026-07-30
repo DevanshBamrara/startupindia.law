@@ -1,16 +1,16 @@
 /* ==========================================================================
    STARTUPINDIA.LAW — "THE SANCTUARY"
-   Final Monochromatic Sacred CSS Design System & Orbit of Questions Hero
+   Final Monochromatic Sacred CSS Design System
    ========================================================================== */
 
+/* 1. Global Custom Properties */
 :root {
   --bg-canvas: #FFFFFF;
   --bg-soft: #F8F8F8;
   --color-ink: #1A1A1A;       /* Primary obsidian ink */
   --color-charcoal: #4A4A4A;  /* Secondary charcoal */
   --color-grey: #8C8C8C;      /* Tertiary whisper grey */
-  --color-line: #E0E0E0;      /* Subtle border line */
-  --color-input-border: #D0D0D0;
+  --color-line: #E0E0E0;      /* Subtle border pencil line */
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -18,6 +18,7 @@
   --ease-temple: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
 
+/* 2. Reset & Global Styles */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -46,6 +47,7 @@ a, button, input, select, textarea, [role="button"] {
   cursor: none;
 }
 
+/* 3. Simple Monochromatic Cursor */
 .custom-cursor-dot {
   position: fixed;
   top: 0;
@@ -55,11 +57,183 @@ a, button, input, select, textarea, [role="button"] {
   background-color: var(--color-ink);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 10000000;
   transform: translate(-50%, -50%);
   transition: opacity 300ms ease;
 }
 
+/* ==========================================================================
+   STATUTORY LEGAL DISCLAIMER MODAL (BAR COUNCIL & ADVOCATES ACT 1961)
+   ========================================================================== */
+.legal-disclaimer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 13, 16, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 400ms var(--ease-temple), visibility 400ms var(--ease-temple);
+}
+
+.legal-disclaimer-overlay.disclaimer-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.legal-disclaimer-modal {
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  max-width: 780px;
+  width: 100%;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.16);
+  padding: 40px 44px;
+  animation: modalPopIn 500ms var(--ease-temple);
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.disclaimer-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 16px;
+}
+
+.disclaimer-badge {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.disclaimer-title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.disclaimer-lead {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-charcoal);
+  font-weight: 400;
+}
+
+.disclaimer-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 16px;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+.disclaimer-scroll-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.disclaimer-scroll-body::-webkit-scrollbar-thumb {
+  background-color: var(--color-line);
+  border-radius: 4px;
+}
+
+.disclaimer-points {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.disclaimer-points li {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-charcoal);
+  line-height: 1.6;
+}
+
+.disclaimer-conclusion {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--color-ink);
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-line);
+}
+
+.disclaimer-footer-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-line);
+}
+
+.btn-disclaimer-agree {
+  background-color: var(--color-ink);
+  color: #FFFFFF;
+  border: 1px solid var(--color-ink);
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.btn-disclaimer-agree:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-disclaimer-disagree {
+  background-color: transparent;
+  color: var(--color-grey);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 14px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 300ms ease, border-color 300ms ease;
+}
+
+.btn-disclaimer-disagree:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+/* 4. Layout Containers & Structural Axis */
 .hidden {
   display: none !important;
 }
@@ -82,6 +256,7 @@ a, button, input, select, textarea, [role="button"] {
   padding: 120px 24px;
 }
 
+/* Typography Scale */
 h1 {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -118,282 +293,316 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 1: HERO SECTION — "ORBIT OF QUESTIONS"
+   FRAME 1: THE BELL & FLEXIBLE INQUIRY BASIN
    ========================================================================== */
-.frame-hero {
+.frame-bell {
   min-height: 100vh;
-  width: 100vw;
-  background-color: var(--bg-canvas);
-  overflow: hidden;
-  justify-content: flex-start;
-  padding-top: 120px;
-  padding-bottom: 60px;
-  padding-left: 0;
-  padding-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: calc(30vh - 60px);
+  padding-bottom: 80px;
 }
 
-.hero-heading {
+.bell-container {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bell-question {
+  text-align: center;
   font-size: 64px;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1.2;
-  opacity: 0;
-  animation: heroFadeIn 800ms ease-out 200ms forwards;
+  margin-bottom: 80px;
 }
 
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.constellation-container {
-  position: relative;
+/* Flexible Query Basin Wrapper */
+.query-vessel-wrapper {
   width: 100%;
-  height: 60vh;
-  min-height: 480px;
-  overflow: hidden;
-  margin-top: 40px;
-}
-
-/* Central Input Vessel (Anchored) */
-.central-vessel-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 420px;
-  z-index: 10;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 600ms var(--ease-temple);
 }
 
-.central-vessel-box {
+.query-vessel {
   width: 100%;
-}
-
-.central-vessel-input {
-  width: 100%;
-  height: 56px;
-  background: var(--bg-canvas);
-  border: 1.5px solid var(--color-input-border);
-  border-radius: 28px;
-  padding: 0 24px;
-  font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--color-ink);
+  min-height: 64px;
+  background-color: var(--bg-soft);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px;
+  transition: border-color 400ms var(--ease-temple), box-shadow 400ms var(--ease-temple), transform 300ms ease;
   outline: none;
-  box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.03);
-  transition: border-color 400ms ease, box-shadow 400ms ease;
-  text-align: center;
 }
 
-.central-vessel-input::placeholder {
-  color: var(--color-grey);
-  font-style: italic;
-}
-
-.central-vessel-input:focus {
+.query-vessel:hover, .query-vessel:focus {
   border-color: var(--color-ink);
-  box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
-/* Email Reveal Container */
-.email-reveal-container {
-  width: 100%;
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: emailFadeIn 500ms ease-out 300ms forwards;
-}
-
-@keyframes emailFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.selected-question-text {
+.vessel-placeholder {
   font-family: var(--font-serif);
-  font-size: 18px;
-  color: var(--color-ink);
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.email-reveal-form {
+  font-style: italic;
+  font-size: 20px;
+  color: var(--color-grey);
   display: flex;
-  width: 100%;
-  border-bottom: 1px solid var(--color-line);
-  padding-bottom: 4px;
+  align-items: center;
+  gap: 10px;
 }
 
-.email-reveal-input {
+.search-icon {
+  stroke: var(--color-grey);
+}
+
+/* Question Step Container */
+.vessel-question-step, .vessel-email-step {
+  width: 100%;
+  background-color: var(--bg-soft);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 32px 36px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+  animation: fadeInStep 400ms var(--ease-temple);
+}
+
+@keyframes fadeInStep {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vessel-step-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.vessel-question-form, .vessel-email-form {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.vessel-input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 2px solid var(--color-ink);
+  padding-bottom: 8px;
+  gap: 12px;
+}
+
+.vessel-text-input {
   flex: 1;
   background: transparent;
   border: none;
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 18px;
   color: var(--color-ink);
-  padding: 8px;
+  padding: 8px 0;
   outline: none;
-  text-align: center;
 }
 
-.email-submit-btn {
-  background: transparent;
+.vessel-text-input::placeholder {
+  color: var(--color-grey);
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+.vessel-action-btn {
+  background: var(--color-ink);
+  color: #FFFFFF;
   border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
   font-family: var(--font-sans);
   font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 300ms ease, transform 300ms ease;
+}
+
+.vessel-action-btn:hover {
+  background-color: #000000;
+  transform: translateX(2px);
+}
+
+/* Suggestion Deck */
+.revealed-questions {
+  border-top: 1px solid var(--color-line);
+  padding-top: 20px;
+  text-align: left;
+}
+
+.suggestions-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--color-grey);
-  padding: 4px 12px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.questions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.question-line {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background-color 300ms ease, border-color 300ms ease;
+  outline: none;
+}
+
+.question-line:hover, .question-line:focus {
+  background-color: var(--bg-canvas);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.ink-circle {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--color-grey);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+.question-line:hover .ink-circle {
+  background-color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.question-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-charcoal);
+}
+
+/* Email Step Preview Box */
+.question-preview-box {
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.preview-tag {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-grey);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.preview-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.btn-change-question {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-grey);
+  text-decoration: underline;
+  padding: 0;
   transition: color 300ms ease;
 }
 
-.email-submit-btn:hover {
+.btn-change-question:hover {
   color: var(--color-ink);
 }
 
-.email-reveal-subnote {
-  font-size: 11px;
+.vessel-prompt {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-ink);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.vessel-subnote {
+  font-size: 12px;
   color: var(--color-grey);
-  margin-top: 8px;
+  margin-top: 10px;
+  text-align: left;
 }
 
 .vessel-confirmation {
-  margin-top: 16px;
-  font-size: 15px;
-  color: var(--color-ink);
-}
-
-/* Floating Questions (6 Button Pills) */
-.pills-stack {
-  position: absolute;
-  inset: 0;
-  pointer-events: auto;
-}
-
-.floating-pill {
-  position: absolute;
-  height: 44px;
-  padding: 0 20px;
-  background: var(--bg-canvas);
+  background-color: var(--bg-soft);
   border: 1px solid var(--color-line);
-  border-radius: 22px;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 300;
+  border-radius: 12px;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+}
+
+.confirm-symbol {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-ink);
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.confirm-text {
+  font-family: var(--font-serif);
+  font-size: 20px;
   color: var(--color-ink);
-  cursor: pointer;
-  white-space: nowrap;
-  backface-visibility: hidden;
-  z-index: 2;
-  outline: none;
-  transition: border-color 400ms ease, background 400ms ease, opacity 600ms ease;
-  will-change: transform;
-  animation: removeWillChange 0.1s 3s forwards;
 }
 
-@keyframes removeWillChange {
-  to { will-change: auto; }
-}
-
-.floating-pill:hover {
+.question-line:hover .ink-circle {
+  background-color: var(--color-ink);
   border-color: var(--color-ink);
-  background: var(--bg-soft);
-  animation-play-state: paused !important;
 }
 
-/* Initial Floating Positions & Individual Animations */
-.pill-1 {
-  top: 15%;
-  left: 5%;
-  animation: float1 7.2s ease-in-out infinite alternate, removeWillChange 0.1s 3s forwards;
-}
-
-.pill-2 {
-  top: 20%;
-  right: 8%;
-  animation: float2 6.8s ease-in-out 0.5s infinite alternate, removeWillChange 0.1s 3s forwards;
-}
-
-.pill-3 {
-  top: 50%;
-  left: 3%;
-  animation: float3 7.6s ease-in-out 1.0s infinite alternate, removeWillChange 0.1s 3s forwards;
-}
-
-.pill-4 {
-  top: 55%;
-  right: 5%;
-  animation: float4 6.4s ease-in-out 0.3s infinite alternate, removeWillChange 0.1s 3s forwards;
-}
-
-.pill-5 {
-  top: 75%;
-  left: 12%;
-  animation: float5 7.0s ease-in-out 0.8s infinite alternate, removeWillChange 0.1s 3s forwards;
-}
-
-.pill-6 {
-  top: 72%;
-  right: 15%;
-  animation: float6 6.6s ease-in-out 1.2s infinite alternate, removeWillChange 0.1s 3s forwards;
-}
-
-/* Organic Floating GPU Keyframe Trajectories */
-@keyframes float1 {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  25% { transform: translate3d(18px, -7px, 0); }
-  50% { transform: translate3d(-9px, 14px, 0); }
-  75% { transform: translate3d(-18px, -14px, 0); }
-}
-
-@keyframes float2 {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  30% { transform: translate3d(-22px, 10px, 0); }
-  60% { transform: translate3d(12px, -16px, 0); }
-  85% { transform: translate3d(-15px, 8px, 0); }
-}
-
-@keyframes float3 {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  20% { transform: translate3d(20px, 8px, 0); }
-  55% { transform: translate3d(-12px, -12px, 0); }
-  80% { transform: translate3d(15px, 10px, 0); }
-}
-
-@keyframes float4 {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  35% { transform: translate3d(-24px, -14px, 0); }
-  70% { transform: translate3d(14px, 18px, 0); }
-}
-
-@keyframes float5 {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  40% { transform: translate3d(16px, -20px, 0); }
-  75% { transform: translate3d(-16px, 12px, 0); }
-}
-
-@keyframes float6 {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  25% { transform: translate3d(-20px, 15px, 0); }
-  65% { transform: translate3d(18px, -10px, 0); }
-}
-
-/* Idle Breathing Keyframes */
-@keyframes breathe {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
-}
-
-/* Dimmed State when Pill Selected */
-.pills-stack.dimmed .floating-pill {
-  opacity: 0.3;
-  pointer-events: none;
+.question-text {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--color-charcoal);
 }
 
 /* ==========================================================================
@@ -681,7 +890,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 5: THE WISDOM POOL
+   FRAME 5: THE WISDOM POOL (DEAD-CENTER ALIGNED SACRED REVERENCE)
    ========================================================================== */
 .frame-wisdom {
   background-color: var(--bg-canvas);
@@ -736,7 +945,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 6: THE PHILOSOPHY
+   FRAME 6: THE PHILOSOPHY (DEAD-CENTER ALIGNED BODHI TREE & STATEMENT)
    ========================================================================== */
 .frame-tree {
   background-color: var(--bg-canvas);
@@ -877,6 +1086,7 @@ p, body {
   color: var(--color-charcoal);
 }
 
+/* Event Modal */
 .event-modal {
   position: fixed;
   inset: 0;
@@ -937,124 +1147,72 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 8: CONTACT & OFFERINGS
+   FRAME 8: ADVISORY & CONTACT
    ========================================================================== */
 .frame-offering {
   background-color: var(--bg-canvas);
 }
 
 .offering-section {
-  margin-bottom: 80px;
+  margin-bottom: 90px;
 }
 
-.offering-heading {
-  font-size: 32px;
-  margin-bottom: 32px;
+.offering-main-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 40px;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+  text-align: left;
 }
 
-.schemes-grid {
+.offering-lead-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-charcoal);
+  margin-bottom: 36px;
+  max-width: 820px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.advisory-pillars-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
-.scheme-item {
-  padding: 20px 24px;
+.pillar-card {
   background-color: var(--bg-soft);
   border: 1px solid var(--color-line);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 90px;
-}
-
-.scheme-name {
-  font-size: 16px;
-  color: var(--color-ink);
-}
-
-.scheme-line {
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-line);
-}
-
-.scheme-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.scheme-modal-content {
-  background-color: var(--bg-canvas);
-  border: 1px solid var(--color-line);
-  padding: 40px;
   border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  position: relative;
+  padding: 32px 28px;
+  text-align: left;
+  transition: border-color 400ms var(--ease-temple), box-shadow 400ms var(--ease-temple), transform 400ms var(--ease-temple);
 }
 
-.scheme-modal-close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: var(--color-grey);
+.pillar-card:hover {
+  border-color: var(--color-ink);
+  background-color: var(--bg-canvas);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
 }
 
-.scheme-modal-content h4 {
+.pillar-title {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 500;
   color: var(--color-ink);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.scheme-modal-content p {
-  font-size: 15px;
-  color: var(--color-charcoal);
-  margin-bottom: 24px;
-}
-
-.scheme-link {
+.pillar-desc {
+  font-family: var(--font-sans);
   font-size: 14px;
-  color: var(--color-ink);
-  text-decoration: underline;
-}
-
-.incubators-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.incubator-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--color-line);
-}
-
-.inc-name {
-  font-family: var(--font-serif);
-  font-size: 20px;
-  color: var(--color-ink);
-}
-
-.inc-tag {
-  font-size: 13px;
-  color: var(--color-grey);
+  font-weight: 300;
+  color: var(--color-charcoal);
+  line-height: 1.6;
 }
 
 .offering-connection {
@@ -1122,7 +1280,7 @@ p, body {
 }
 
 /* ==========================================================================
-   FRAME 9: FOOTER
+   FRAME 9: FOOTER (CENTER ALIGNED DIVIDER & DISCLAIMER)
    ========================================================================== */
 .site-footer {
   background-color: var(--bg-canvas);
@@ -1162,62 +1320,27 @@ p, body {
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVE & PRAYER FLAG STACK FALLBACK (<768px)
+   RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 768px) {
-  .frame-hero {
-    min-height: 90vh;
-    padding-top: 60px;
+  .frame {
+    padding: 80px 20px;
   }
 
-  .hero-heading {
-    font-size: 32px;
-    max-width: 320px;
+  h1, .bell-question {
+    font-size: 36px;
   }
 
-  .constellation-container {
-    height: auto;
-    overflow: visible;
-    margin-top: 32px;
+  h2, .sanctum-headline, .section-headline, .tree-headline, .events-heading {
+    font-size: 28px;
   }
 
-  .central-vessel-wrapper {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: calc(100% - 48px);
-    margin: 0 24px 32px 24px;
+  h3, .niche-title, .vitrine-name, .connection-headline {
+    font-size: 22px;
   }
 
-  /* Prayer Flag Stack Fallback — Zero Motion */
-  .pills-stack {
-    position: relative;
-    inset: auto;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-
-  .floating-pill {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    animation: none !important;
-    width: calc(100% - 64px);
-    display: block;
-  }
-
-  /* Staggered margins for organic hand-placed prayer flag feel */
-  .pill-1, .pill-3, .pill-5 {
-    margin-left: 24px;
-  }
-
-  .pill-2, .pill-4, .pill-6 {
-    margin-left: auto;
-    margin-right: 24px;
+  p, body {
+    font-size: 16px;
   }
 
   .revelation-number {
@@ -1242,12 +1365,5 @@ p, body {
 
   .disclaimer-text {
     font-size: 10px;
-  }
-}
-
-/* Prefers Reduced Motion Safeguards */
-@media (prefers-reduced-motion: reduce) {
-  .floating-pill, .hero-heading {
-    animation: none !important;
   }
 }
