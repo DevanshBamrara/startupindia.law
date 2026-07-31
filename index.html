@@ -182,10 +182,17 @@
             </div>
 
             <p class="vessel-prompt">Leave your email &mdash; Adv. Ashish Gupta responds within a sunrise.</p>
-            <form class="vessel-email-form" id="vesselEmailForm">
+            <form class="vessel-email-form" id="vesselEmailForm" action="https://api.web3forms.com/submit" method="POST">
+              <!-- Web3Forms Access Key -->
+              <input type="hidden" name="access_key" value="0153cfef-d1af-476d-b51c-49affcb999de" id="web3formsAccessKey">
+              <input type="hidden" name="subject" value="New Legal Inquiry — StartupIndia.Law">
+              <input type="hidden" name="from_name" value="StartupIndia.Law Inquiry Basin">
+              <input type="hidden" name="question" id="web3formsQuestionInput" value="">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
               <div class="vessel-input-group">
-                <input type="email" class="vessel-text-input" id="vesselEmailInput" placeholder="your.name@domain.com" required>
-                <button type="submit" class="vessel-action-btn" aria-label="Submit inquiry">
+                <input type="email" name="email" inputmode="email" autocomplete="email" class="vessel-text-input" id="vesselEmailInput" placeholder="your.name@domain.com" required style="font-size: 16px; height: 56px; width: 100%;">
+                <button type="submit" class="vessel-action-btn" id="btnSubmitEmail" aria-label="Submit inquiry">
                   <span class="arrow-icon">Submit &rarr;</span>
                 </button>
               </div>
@@ -214,15 +221,20 @@
           </div>
         </div>
 
+        <div class="swipe-hint" id="corridorSwipeHint">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
+          <span>Swipe horizontally to view credentials &rarr;</span>
+        </div>
+
         <div class="corridor-track" id="corridorTrack" tabindex="0" aria-label="Horizontal corridor credentials">
           <!-- Panel 1 -->
           <article class="corridor-panel">
             <div class="panel-inner">
               <span class="panel-number">I</span>
               <blockquote class="panel-quote">
-                "Chief Counsel to Shark Tank India-featured startups — including &#8377;1 Cr+ deals closed on national television."
+                "Advisor to ventures featured on Shark Tank India &mdash; guiding founders from idea to national television and beyond."
               </blockquote>
-              <span class="panel-subtext">Shark Tank India Legal Advisory</span>
+              <span class="panel-subtext">Venture Building &amp; Fundraising Strategy</span>
             </div>
           </article>
 
@@ -231,9 +243,9 @@
             <div class="panel-inner">
               <span class="panel-number">II</span>
               <blockquote class="panel-quote">
-                "Strategic advisor to startups now valued at &#8377;100+ Crores."
+                "Strategic growth advisor to enterprises now valued at &#8377;100+ Crores &mdash; across consumer tech, deep-tech, and healthcare."
               </blockquote>
-              <span class="panel-subtext">High-Growth Venture Scaling</span>
+              <span class="panel-subtext">Scale-Up Advisory &amp; Market Entry</span>
             </div>
           </article>
 
@@ -242,9 +254,9 @@
             <div class="panel-inner">
               <span class="panel-number">III</span>
               <blockquote class="panel-quote">
-                "Evaluator — IIT Bombay SINE Innovation Cohort."
+                "Evaluator &amp; Mentor &mdash; IIT Bombay SINE Innovation Cohort."
               </blockquote>
-              <span class="panel-subtext">Deep-Tech Incubation Mentorship</span>
+              <span class="panel-subtext">Deep-Tech Incubation &amp; Product Strategy</span>
             </div>
           </article>
 
@@ -253,9 +265,9 @@
             <div class="panel-inner">
               <span class="panel-number">IV</span>
               <blockquote class="panel-quote">
-                "Invited by Google India to advise leading YouTube creators on technology and IP."
+                "Invited by Google India, Gurgaon, to advise top YouTube creators on technology, content protection, and creator economy strategy."
               </blockquote>
-              <span class="panel-subtext">Media, Creator Economy &amp; Content Law</span>
+              <span class="panel-subtext">Creator Economy &amp; Digital Assets Advisory</span>
             </div>
           </article>
 
@@ -266,7 +278,7 @@
               <blockquote class="panel-quote">
                 "Berkeley Law alumnus. Qualified before the United States Patent and Trademark Office (USPTO)."
               </blockquote>
-              <span class="panel-subtext">US-India Cross-Border Patent Counsel</span>
+              <span class="panel-subtext">Berkeley, California, USA &mdash; Cross-Border Innovation Counsel</span>
             </div>
           </article>
 
@@ -275,9 +287,9 @@
             <div class="panel-inner">
               <span class="panel-number">VI</span>
               <blockquote class="panel-quote">
-                "Former Director — Pendrell Corporation (USA). IP strategy, licensing, and M&amp;A across the US, Europe, and Asia."
+                "Former Director &mdash; Pendrell Corporation (USA). IP strategy, technology transactions, and M&amp;A across the United States, Europe, and Asia."
               </blockquote>
-              <span class="panel-subtext">Global Technology Transactions &amp; M&amp;A</span>
+              <span class="panel-subtext">Global Technology Transactions &amp; Innovation Strategy</span>
             </div>
           </article>
 
@@ -286,9 +298,9 @@
             <div class="panel-inner">
               <span class="panel-number">VII</span>
               <blockquote class="panel-quote">
-                "Advised ISRO, DRDO, and BEL scientists on intellectual property."
+                "Advised scientists and technologists from ISRO, DRDO, and Bharat Electronics Limited on protecting strategic innovation."
               </blockquote>
-              <span class="panel-subtext">Defense &amp; Strategic Space Technology IP</span>
+              <span class="panel-subtext">Defense, Aerospace &amp; Strategic Technology Advisory</span>
             </div>
           </article>
 
@@ -297,9 +309,9 @@
             <div class="panel-inner">
               <span class="panel-number">VIII</span>
               <blockquote class="panel-quote">
-                "Mentor — Techstars and global accelerator programmes."
+                "Mentor &mdash; Techstars and global accelerator programmes, including Boeing BUILD."
               </blockquote>
-              <span class="panel-subtext">Global Venture Acceleration</span>
+              <span class="panel-subtext">Global Venture Acceleration &amp; Product Creation</span>
             </div>
           </article>
         </div>
@@ -322,44 +334,44 @@
     <section class="frame frame-sanctum" id="frame-3">
       <div class="content-container">
         <h2 class="sanctum-headline">
-          "We protect new business. We design jurisdiction. We hold intellectual property."
+          "We help build companies. We design strategy. We protect what matters."
         </h2>
 
         <div class="niches-grid">
-          <!-- Niche 1 -->
+          <!-- Card 1 -->
           <article class="niche-card">
-            <h3 class="niche-title">Startup Incorporation &amp; Jurisdiction</h3>
-            <p class="niche-subtitle">India, US (Delaware), Singapore — entity architecture that serves your funding goals.</p>
+            <h3 class="niche-title">Venture Building &amp; Growth Advisory</h3>
+            <p class="niche-subtitle">Company formation, market entry strategy, and scaling architecture &mdash; India, US (Delaware), Singapore, and beyond.</p>
           </article>
 
-          <!-- Niche 2 -->
+          <!-- Card 2 -->
           <article class="niche-card">
-            <h3 class="niche-title">Intellectual Property Strategy</h3>
-            <p class="niche-subtitle">Patents, trademarks, trade secrets, and IP portfolio management.</p>
+            <h3 class="niche-title">Innovation &amp; Product Strategy</h3>
+            <p class="niche-subtitle">From concept to commercialization. Product protection, competitive moat design, and go-to-market advisory.</p>
           </article>
 
-          <!-- Niche 3 -->
+          <!-- Card 3 -->
           <article class="niche-card">
-            <h3 class="niche-title">IP Valuation &amp; Transactions</h3>
-            <p class="niche-subtitle">Finance-aware IP valuation, licensing, brokerage, and technology transfer.</p>
+            <h3 class="niche-title">Fundraising &amp; Investor Readiness</h3>
+            <p class="niche-subtitle">Pitch preparation, term sheet negotiation, due diligence readiness, and capital structure design for seed to Series A and beyond.</p>
           </article>
 
-          <!-- Niche 4 -->
+          <!-- Card 4 -->
           <article class="niche-card">
-            <h3 class="niche-title">Founder Agreements &amp; Equity</h3>
-            <p class="niche-subtitle">Agreements that survive fallout. Vesting, cliffs, and dispute resolution.</p>
+            <h3 class="niche-title">Intellectual Property Architecture</h3>
+            <p class="niche-subtitle">Patents, trademarks, trade secrets, and IP portfolio strategy &mdash; built for defense and monetization.</p>
           </article>
 
-          <!-- Niche 5 -->
+          <!-- Card 5 -->
           <article class="niche-card">
-            <h3 class="niche-title">Investment &amp; Due Diligence Readiness</h3>
-            <p class="niche-subtitle">Shark Tank-ready, investor-ready, diligence-proof.</p>
+            <h3 class="niche-title">Founder Alignment &amp; Equity Design</h3>
+            <p class="niche-subtitle">Vesting schedules, cliff structures, co-founder agreements, and dispute resolution frameworks that survive conflict.</p>
           </article>
 
-          <!-- Niche 6 -->
+          <!-- Card 6 -->
           <article class="niche-card">
-            <h3 class="niche-title">Technology &amp; Media Law</h3>
-            <p class="niche-subtitle">Privacy law, digital rights, media, entertainment, and content creator advisory.</p>
+            <h3 class="niche-title">Digital Assets &amp; Creator Economy</h3>
+            <p class="niche-subtitle">Content protection, licensing, platform compliance, and monetization strategy for creators, media ventures, and digital-first brands.</p>
           </article>
         </div>
       </div>
@@ -369,11 +381,11 @@
     <section class="frame frame-gallery" id="frame-4">
       <div class="content-container">
         <h2 class="section-headline">
-          "Startups we've helped build."
+          "Ventures we've advised."
         </h2>
 
         <div class="vitrines-grid">
-          <!-- Vitrine 1: AIRTH -->
+          <!-- Vitrine 1: Clean Air Technology -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -381,58 +393,58 @@
                 <circle cx="200" cy="125" r="45" stroke="#1A1A1A" stroke-width="1.5"/>
                 <circle cx="200" cy="125" r="25" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="3 3"/>
                 <path d="M160 125h80M200 85v80" stroke="#1A1A1A" stroke-width="1"/>
-                <text x="200" y="210" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">AIRTH // IIT KANPUR &amp; BOMBAY</text>
+                <text x="200" y="210" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">IIT KANPUR, BOMBAY &amp; IISC</text>
               </svg>
             </div>
-            <h3 class="vitrine-name">AIRTH</h3>
+            <h3 class="vitrine-name">Clean Air Technology</h3>
             <p class="vitrine-caption">
-              "India's 1st AC air purifier — technology from IIT Kanpur, IIT Bombay, IISc Bangalore."
+              "India's first AC-integrated air purifier &mdash; technology developed across IIT Kanpur, IIT Bombay, and IISc Bangalore."
             </p>
-            <span class="vitrine-stat">&#8377;1 Cr for 3.7% equity — Shark Tank India 2025.</span>
+            <span class="vitrine-stat">Secured national television funding. Patent-protected breakthrough filtration technology.</span>
             <button class="vitrine-mystery-link" data-target="drawer-airth">
               Curious to know more?
             </button>
             <div class="vitrine-drawer hidden" id="drawer-airth">
               <p class="drawer-text">
-                Comprehensive patent protection &amp; technology transfer agreements engineered for AIRTH's break-through clean-air technology.
+                End-to-end patent strategy, technology transfer agreements, and investor readiness advisory for a breakthrough clean-air innovation now in thousands of Indian homes.
               </p>
               <form class="drawer-form">
-                <input type="email" placeholder="your.email@domain.com" required>
+                <input type="email" inputmode="email" autocomplete="email" placeholder="your.email@domain.com" required style="font-size: 16px; min-height: 48px;">
                 <button type="submit">&rarr;</button>
               </form>
             </div>
           </article>
 
-          <!-- Vitrine 2: ZERODOR -->
+          <!-- Vitrine 2: Water Conservation Technology -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
                 <rect width="400" height="250" fill="#FFFFFF" stroke="#E0E0E0"/>
                 <path d="M150 75h100v100c0 20-20 25-50 25s-50-5-50-25V75z" stroke="#1A1A1A" stroke-width="1.5"/>
                 <line x1="200" y1="75" x2="200" y2="200" stroke="#4A4A4A" stroke-width="1"/>
-                <text x="200" y="230" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">ZERODOR // WATERLESS INNOVATION</text>
+                <text x="200" y="230" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">WATER CONSERVATION INNOVATION</text>
               </svg>
             </div>
-            <h3 class="vitrine-name">ZERODOR</h3>
+            <h3 class="vitrine-name">Water Conservation Technology</h3>
             <p class="vitrine-caption">
-              "Waterless urinals saving millions of liters of water daily."
+              "Waterless urinal technology saving millions of liters of water daily across commercial and public infrastructure."
             </p>
-            <span class="vitrine-stat">Shark Tank India 2024 — &#8377;1 Crore offer for 10% equity.</span>
+            <span class="vitrine-stat">National television funding. Green-tech patent portfolio secured.</span>
             <button class="vitrine-mystery-link" data-target="drawer-zerodor">
               Curious to know more?
             </button>
             <div class="vitrine-drawer hidden" id="drawer-zerodor">
               <p class="drawer-text">
-                Green-tech patent filings and commercial supply contract legal architecture.
+                Green-technology patent filings, commercial supply agreement architecture, and regulatory compliance for water conservation innovation deployed at scale.
               </p>
               <form class="drawer-form">
-                <input type="email" placeholder="your.email@domain.com" required>
+                <input type="email" inputmode="email" autocomplete="email" placeholder="your.email@domain.com" required style="font-size: 16px; min-height: 48px;">
                 <button type="submit">&rarr;</button>
               </form>
             </div>
           </article>
 
-          <!-- Vitrine 3: HORNBACK -->
+          <!-- Vitrine 3: Electric Mobility -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -440,29 +452,29 @@
                 <polygon points="200,75 270,150 130,150" stroke="#1A1A1A" stroke-width="1.5" fill="none"/>
                 <circle cx="130" cy="150" r="22" stroke="#4A4A4A" stroke-width="1.5"/>
                 <circle cx="270" cy="150" r="22" stroke="#4A4A4A" stroke-width="1.5"/>
-                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">HORNBACK // FOLDING EV BICYCLE</text>
+                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">FOLDING EV MOBILITY</text>
               </svg>
             </div>
-            <h3 class="vitrine-name">HORNBACK</h3>
+            <h3 class="vitrine-name">Electric Mobility</h3>
             <p class="vitrine-caption">
-              "World's 1st diamond-frame folding electric bicycle."
+              "World's first diamond-frame folding electric bicycle &mdash; mechanical design innovation."
             </p>
-            <span class="vitrine-stat">Shark Tank India 2023 — &#8377;50 Lakhs for 2.5% equity.</span>
+            <span class="vitrine-stat">National television funding. International trademark and design patent secured.</span>
             <button class="vitrine-mystery-link" data-target="drawer-hornback">
               Curious to know more?
             </button>
             <div class="vitrine-drawer hidden" id="drawer-hornback">
               <p class="drawer-text">
-                Mechanical design patent protection and international trademark registration.
+                Mechanical design patent protection, international trademark registration, and manufacturing partnership agreements for a category-defining electric vehicle.
               </p>
               <form class="drawer-form">
-                <input type="email" placeholder="your.email@domain.com" required>
+                <input type="email" inputmode="email" autocomplete="email" placeholder="your.email@domain.com" required style="font-size: 16px; min-height: 48px;">
                 <button type="submit">&rarr;</button>
               </form>
             </div>
           </article>
 
-          <!-- Vitrine 4: LIGER MOBILITY -->
+          <!-- Vitrine 4: Self-Balancing Personal Mobility -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
@@ -470,81 +482,81 @@
                 <circle cx="140" cy="160" r="24" stroke="#1A1A1A" stroke-width="1.5"/>
                 <circle cx="260" cy="160" r="24" stroke="#1A1A1A" stroke-width="1.5"/>
                 <path d="M140 160h120L220 90h-50z" stroke="#4A4A4A" stroke-width="1.5"/>
-                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">LIGER // SELF-BALANCING SCOOTER</text>
+                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">SELF-BALANCING GYRO TECH</text>
               </svg>
             </div>
-            <h3 class="vitrine-name">LIGER MOBILITY</h3>
+            <h3 class="vitrine-name">Self-Balancing Personal Mobility</h3>
             <p class="vitrine-caption">
-              "World's 1st self-balancing scooter — mentored by Ministry of Heavy Industries and ARAI."
+              "World's first self-balancing scooter &mdash; developed with mentorship from the Ministry of Heavy Industries and ARAI."
             </p>
-            <span class="vitrine-stat">Launched Auto Expo 2023. Invited to guide startups on IP by SINE IIT Bombay.</span>
+            <span class="vitrine-stat">Launched at Auto Expo 2023, Delhi. Invited by SINE IIT Bombay to guide other startups on IP strategy.</span>
             <button class="vitrine-mystery-link" data-target="drawer-liger">
               Curious to know more?
             </button>
             <div class="vitrine-drawer hidden" id="drawer-liger">
               <p class="drawer-text">
-                Deep-tech self-balancing gyro IP defense, government grant compliance, and SINE IIT Bombay IP advisory.
+                Deep-tech gyroscopic IP defense, government grant compliance, and product launch advisory. The founder was later invited by SINE IIT Bombay to mentor the next generation of hardware innovators.
               </p>
               <form class="drawer-form">
-                <input type="email" placeholder="your.email@domain.com" required>
+                <input type="email" inputmode="email" autocomplete="email" placeholder="your.email@domain.com" required style="font-size: 16px; min-height: 48px;">
                 <button type="submit">&rarr;</button>
               </form>
             </div>
           </article>
 
-          <!-- Vitrine 5: METADOME -->
+          <!-- Vitrine 5: Immersive 3D Technology -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
                 <rect width="400" height="250" fill="#FFFFFF" stroke="#E0E0E0"/>
                 <path d="M130 160 L200 70 L270 160 Z" stroke="#1A1A1A" stroke-width="1.5"/>
                 <path d="M160 160 L200 100 L240 160 Z" stroke="#4A4A4A" stroke-width="1"/>
-                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">METADOME // IIT DELHI 3D TECH</text>
+                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">IIT DELHI 3D SPATIAL PLATFORM</text>
               </svg>
             </div>
-            <h3 class="vitrine-name">METADOME</h3>
+            <h3 class="vitrine-name">Immersive 3D Technology</h3>
             <p class="vitrine-caption">
-              "Virtual 3D space startup from IIT Delhi."
+              "Virtual 3D spatial platform &mdash; from IIT Delhi."
             </p>
-            <span class="vitrine-stat">&#8377;100 Crore turnover. $6.5M Series A.</span>
+            <span class="vitrine-stat">&#8377;100 Crore turnover. $6.5M Series A from leading venture funds including Siana Capital and Chiratae Ventures.</span>
             <button class="vitrine-mystery-link" data-target="drawer-metadome">
               Curious to know more?
             </button>
             <div class="vitrine-drawer hidden" id="drawer-metadome">
               <p class="drawer-text">
-                Series A equity legal structuring, US incorporation, and 3D spatial engine software IP protection.
+                Series A equity structuring, US incorporation strategy, and proprietary 3D spatial engine software protection for a venture now operating at nine-figure revenue.
               </p>
               <form class="drawer-form">
-                <input type="email" placeholder="your.email@domain.com" required>
+                <input type="email" inputmode="email" autocomplete="email" placeholder="your.email@domain.com" required style="font-size: 16px; min-height: 48px;">
                 <button type="submit">&rarr;</button>
               </form>
             </div>
           </article>
 
-          <!-- Vitrine 6: iBREASTEXAM -->
+          <!-- Vitrine 6: Medical Device for Early Detection -->
           <article class="vitrine-card">
             <div class="vitrine-frame">
               <svg class="artifact-svg" viewBox="0 0 400 250" fill="none">
                 <rect width="400" height="250" fill="#FFFFFF" stroke="#E0E0E0"/>
                 <rect x="150" y="70" width="100" height="110" rx="12" stroke="#1A1A1A" stroke-width="1.5"/>
                 <circle cx="200" cy="125" r="22" stroke="#4A4A4A" stroke-width="1.5"/>
-                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">iBREASTEXAM // FDA CLEARED MEDTECH</text>
+                <text x="200" y="215" text-anchor="middle" font-family="Cormorant Garamond" font-size="12" fill="#8C8C8C" letter-spacing="2">FDA CLEARED MEDICAL DEVICE</text>
               </svg>
             </div>
-            <h3 class="vitrine-name">iBREASTEXAM</h3>
+            <h3 class="vitrine-name">Medical Device for Early Detection</h3>
             <p class="vitrine-caption">
-              "FDA-cleared handheld device for early breast lump detection."
+              "FDA-cleared handheld device for early detection of breast lumps &mdash; non-invasive, radiation-free."
             </p>
-            <span class="vitrine-stat">$3M Series A. Backed by Biocon. Grants from Pennsylvania Dept. of Health.</span>
+            <span class="vitrine-stat">Featured in a BBC documentary on global health innovation. $3M Series A. Backed by Biocon. Research grants from the Pennsylvania Department of Health and Drexel University.</span>
             <button class="vitrine-mystery-link" data-target="drawer-ibreast">
               Curious to know more?
             </button>
             <div class="vitrine-drawer hidden" id="drawer-ibreast">
               <p class="drawer-text">
-                FDA clearance legal advisory, global medical device patent strategy, and cross-border grant structuring.
+                FDA clearance advisory, global medical device patent strategy, and cross-border grant structuring for a device now deployed across multiple countries and recognized by international media.
               </p>
               <form class="drawer-form">
-                <input type="email" placeholder="your.email@domain.com" required>
+                <input type="email" inputmode="email" autocomplete="email" placeholder="your.email@domain.com" required style="font-size: 16px; min-height: 48px;">
                 <button type="submit">&rarr;</button>
               </form>
             </div>
@@ -606,7 +618,8 @@
 
         <h2 class="tree-headline">"Our time has arrived."</h2>
         <div class="tree-philosophy-lines">
-          <p class="tree-subtext"><em>Nitya.</em> Creation is not a trend. Sensible disruption — purposeful, responsible.</p>
+          <p class="tree-subtext"><em>Nitya.</em> Creation is not a trend.</p>
+          <p class="tree-subtext">We are not a law firm in the traditional sense. We are a company-building advisory. Legal is one capability. Growth, strategy, product creation, and protection &mdash; these are what we do.</p>
           <p class="tree-advocate">The Office of Adv. Ashish Gupta</p>
         </div>
 
@@ -631,6 +644,11 @@
           </div>
         </div>
 
+        <div class="swipe-hint" id="eventsSwipeHint">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
+          <span>Swipe horizontally to view keynotes &rarr;</span>
+        </div>
+
         <div class="events-slider-track" id="eventsSlider">
           <!-- Event 1 -->
           <article class="event-card" data-event="sine">
@@ -642,7 +660,7 @@
               </svg>
             </div>
             <h3 class="event-title">SINE IIT Bombay</h3>
-            <p class="event-line">Technology Law Strategies for deep-tech startups.</p>
+            <p class="event-line">Technology Law &amp; IP Strategy for deep-tech startups.</p>
           </article>
 
           <!-- Event 2 -->
@@ -655,10 +673,75 @@
               </svg>
             </div>
             <h3 class="event-title">Boeing BUILD 3.0</h3>
-            <p class="event-line">IP fundamentals for early-stage entrepreneurs — aerospace and defense.</p>
+            <p class="event-line">IP fundamentals for early-stage entrepreneurs in aerospace and defense.</p>
           </article>
 
           <!-- Event 3 -->
+          <article class="event-card" data-event="google">
+            <div class="event-photo-wrapper">
+              <svg class="event-svg" viewBox="0 0 320 180" fill="none">
+                <rect width="320" height="180" fill="#FFFFFF" stroke="#E0E0E0"/>
+                <rect x="30" y="30" width="260" height="120" stroke="#1A1A1A" stroke-width="1"/>
+                <text x="160" y="95" text-anchor="middle" font-family="Cormorant Garamond" font-size="16" fill="#1A1A1A">GOOGLE INDIA, GURGAON</text>
+              </svg>
+            </div>
+            <h3 class="event-title">Google India, Gurgaon</h3>
+            <p class="event-line">Advising top YouTube content creators on technology, IP, and creator economy strategy under Techstars.</p>
+          </article>
+
+          <!-- Event 4 -->
+          <article class="event-card" data-event="berkeley">
+            <div class="event-photo-wrapper">
+              <svg class="event-svg" viewBox="0 0 320 180" fill="none">
+                <rect width="320" height="180" fill="#FFFFFF" stroke="#E0E0E0"/>
+                <rect x="30" y="30" width="260" height="120" stroke="#1A1A1A" stroke-width="1"/>
+                <text x="160" y="95" text-anchor="middle" font-family="Cormorant Garamond" font-size="16" fill="#1A1A1A">BERKELEY LAW, USA</text>
+              </svg>
+            </div>
+            <h3 class="event-title">Berkeley Law, UC Berkeley, USA</h3>
+            <p class="event-line">Cross-border innovation, IP strategy, and venture advisory.</p>
+          </article>
+
+          <!-- Event 5 -->
+          <article class="event-card" data-event="nls">
+            <div class="event-photo-wrapper">
+              <svg class="event-svg" viewBox="0 0 320 180" fill="none">
+                <rect width="320" height="180" fill="#FFFFFF" stroke="#E0E0E0"/>
+                <rect x="30" y="30" width="260" height="120" stroke="#1A1A1A" stroke-width="1"/>
+                <text x="160" y="95" text-anchor="middle" font-family="Cormorant Garamond" font-size="16" fill="#1A1A1A">NLS GANDHINAGAR</text>
+              </svg>
+            </div>
+            <h3 class="event-title">National Law School (NLS), Gandhinagar</h3>
+            <p class="event-line">Startup law, innovation policy, and entrepreneurship.</p>
+          </article>
+
+          <!-- Event 6 -->
+          <article class="event-card" data-event="patna">
+            <div class="event-photo-wrapper">
+              <svg class="event-svg" viewBox="0 0 320 180" fill="none">
+                <rect width="320" height="180" fill="#FFFFFF" stroke="#E0E0E0"/>
+                <rect x="30" y="30" width="260" height="120" stroke="#1A1A1A" stroke-width="1"/>
+                <text x="160" y="95" text-anchor="middle" font-family="Cormorant Garamond" font-size="16" fill="#1A1A1A">IIT PATNA</text>
+              </svg>
+            </div>
+            <h3 class="event-title">IIT Patna</h3>
+            <p class="event-line">Innovation, IPR, and entrepreneurship development for technology founders.</p>
+          </article>
+
+          <!-- Event 7 -->
+          <article class="event-card" data-event="iitg">
+            <div class="event-photo-wrapper">
+              <svg class="event-svg" viewBox="0 0 320 180" fill="none">
+                <rect width="320" height="180" fill="#FFFFFF" stroke="#E0E0E0"/>
+                <rect x="30" y="30" width="260" height="120" stroke="#1A1A1A" stroke-width="1"/>
+                <text x="160" y="95" text-anchor="middle" font-family="Cormorant Garamond" font-size="16" fill="#1A1A1A">IIT GANDHINAGAR</text>
+              </svg>
+            </div>
+            <h3 class="event-title">IIT Gandhinagar</h3>
+            <p class="event-line">Deep-tech venture building and IP strategy for early-stage innovators.</p>
+          </article>
+
+          <!-- Event 8 -->
           <article class="event-card" data-event="roorkee">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -668,10 +751,10 @@
               </svg>
             </div>
             <h3 class="event-title">IIT Roorkee</h3>
-            <p class="event-line">Innovation, IPR, and Entrepreneurship Development.</p>
+            <p class="event-line">Innovation, IPR, and entrepreneurship development.</p>
           </article>
 
-          <!-- Event 4 -->
+          <!-- Event 9 -->
           <article class="event-card" data-event="cii">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -684,7 +767,7 @@
             <p class="event-line">IPR awareness for MSMEs, startups, and technopreneurs.</p>
           </article>
 
-          <!-- Event 5 -->
+          <!-- Event 10 -->
           <article class="event-card" data-event="les">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -697,7 +780,7 @@
             <p class="event-line">IP Drives the Bottom Line.</p>
           </article>
 
-          <!-- Event 6 -->
+          <!-- Event 11 -->
           <article class="event-card" data-event="iic">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -710,7 +793,7 @@
             <p class="event-line">Building innovation ecosystems in higher education.</p>
           </article>
 
-          <!-- Event 7 -->
+          <!-- Event 12 -->
           <article class="event-card" data-event="its">
             <div class="event-photo-wrapper">
               <svg class="event-svg" viewBox="0 0 320 180" fill="none">
@@ -731,7 +814,7 @@
             <h4 id="eventModalTitle">Event Name</h4>
             <span class="event-modal-meta" id="eventModalMeta">Organizer &bull; Location</span>
             <p id="eventModalDesc">Event Details</p>
-            <p class="event-modal-speaker">Adv. Ashish Gupta invited as key speaker and legal mentor.</p>
+            <p class="event-modal-speaker">Adv. Ashish Gupta invited as key speaker and venture mentor.</p>
           </div>
         </div>
       </div>
@@ -744,7 +827,7 @@
         <div class="offering-section">
           <h2 class="offering-main-title">Government Grants &amp; Policy Counsel</h2>
           <p class="offering-lead-text">
-            "We structure eligibility, engineer compliant grant applications, and unlock non-dilutive government capital, tax exemptions, and statutory subsidies for high-growth ventures."
+            "We structure eligibility, build compliant applications, and unlock non-dilutive government capital, tax exemptions, and statutory benefits for high-growth ventures."
           </p>
 
           <div class="advisory-pillars-grid">

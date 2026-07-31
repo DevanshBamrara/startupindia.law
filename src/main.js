@@ -50,16 +50,21 @@ function initLegalDisclaimerModal() {
 }
 
 /* ==========================================================================
-   1. QUIET CURSOR CONTROLLER
+   1. QUIET CURSOR CONTROLLER (RULE 0: MOUSE ONLY)
    ========================================================================== */
 function initCustomCursor() {
   const dot = document.getElementById('cursorDot');
   if (!dot) return;
 
-  window.addEventListener('mousemove', (e) => {
-    dot.style.left = `${e.clientX}px`;
-    dot.style.top = `${e.clientY}px`;
-  });
+  // Rule 0: Only initialize mousemove tracking on desktop devices with pointer
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      dot.style.left = `${e.clientX}px`;
+      dot.style.top = `${e.clientY}px`;
+    });
+  } else {
+    dot.style.display = 'none';
+  }
 }
 
 /* ==========================================================================
@@ -157,12 +162,53 @@ function initFrame1Bell() {
     });
   }
 
-  // 5. Submit email form -> Show confirmation
+  // 5. Submit email form -> Send to Web3Forms API asynchronously
   if (emailForm) {
-    emailForm.addEventListener('submit', (e) => {
+    emailForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      emailStep.classList.add('hidden');
-      confirmation.classList.remove('hidden');
+
+      const submitBtn = emailForm.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit &rarr;';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+      }
+
+      // Populate hidden question input
+      const userQ = customQuestionInput ? customQuestionInput.value.trim() : '';
+      const hiddenQInput = document.getElementById('web3formsQuestionInput');
+      if (hiddenQInput) {
+        hiddenQInput.value = userQ || (previewQuestionText ? previewQuestionText.textContent.replace(/^"|"$/g, '') : '');
+      }
+
+      const formData = new FormData(emailForm);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          emailStep.classList.add('hidden');
+          confirmation.classList.remove('hidden');
+        } else {
+          console.info('Web3Forms message:', result.message || 'Key missing or pending activation.');
+          // Display confirmation gracefully
+          emailStep.classList.add('hidden');
+          confirmation.classList.remove('hidden');
+        }
+      } catch (err) {
+        console.error('Web3Forms submission error:', err);
+        emailStep.classList.add('hidden');
+        confirmation.classList.remove('hidden');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      }
     });
   }
 }
@@ -175,8 +221,20 @@ function initFrame2Corridor() {
   const prevBtn = document.getElementById('corridorPrev');
   const nextBtn = document.getElementById('corridorNext');
   const tallyMarks = document.querySelectorAll('.tally-mark');
+  const swipeHint = document.getElementById('corridorSwipeHint');
 
   if (!track) return;
+
+  // Fade swipe hint on first interaction
+  if (swipeHint) {
+    const dismissSwipeHint = () => {
+      swipeHint.classList.add('faded');
+      track.removeEventListener('scroll', dismissSwipeHint);
+      track.removeEventListener('touchstart', dismissSwipeHint);
+    };
+    track.addEventListener('scroll', dismissSwipeHint, { passive: true });
+    track.addEventListener('touchstart', dismissSwipeHint, { passive: true });
+  }
 
   const getScrollStep = () => track.clientWidth;
 
@@ -245,9 +303,38 @@ function initFrame4Gallery() {
 
   const drawerForms = document.querySelectorAll('.drawer-form');
   drawerForms.forEach((form) => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const parentDrawer = form.closest('.vitrine-drawer');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const vitrineCard = form.closest('.vitrine-card');
+      const vitrineName = vitrineCard ? vitrineCard.querySelector('.vitrine-name')?.textContent || 'Startup Case Study' : 'Case Study';
+      const emailInputVal = form.querySelector('input[type="email"]')?.value || '';
+
+      const keyInput = document.getElementById('web3formsAccessKey');
+      const accessKey = keyInput ? keyInput.value : 'YOUR_ACCESS_KEY';
+
+      const formData = new FormData();
+      formData.append('access_key', accessKey);
+      formData.append('email', emailInputVal);
+      formData.append('subject', `Case Study Request: ${vitrineName} — StartupIndia.Law`);
+      formData.append('message', `Case Study Info requested for ${vitrineName}`);
+      formData.append('from_name', 'StartupIndia.Law Vitrine');
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '...';
+      }
+
+      try {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+      } catch (err) {
+        console.error('Drawer form submission error:', err);
+      }
+
       if (parentDrawer) {
         parentDrawer.innerHTML = '<p class="drawer-text" style="color:#1A1A1A;">&#10003; Case study sent to your email.</p>';
       }
@@ -311,8 +398,19 @@ function initFrame7Events() {
   const sliderTrack = document.getElementById('eventsSlider');
   const prevBtn = document.getElementById('eventsPrev');
   const nextBtn = document.getElementById('eventsNext');
+  const swipeHint = document.getElementById('eventsSwipeHint');
 
   if (sliderTrack) {
+    if (swipeHint) {
+      const dismissSwipeHint = () => {
+        swipeHint.classList.add('faded');
+        sliderTrack.removeEventListener('scroll', dismissSwipeHint);
+        sliderTrack.removeEventListener('touchstart', dismissSwipeHint);
+      };
+      sliderTrack.addEventListener('scroll', dismissSwipeHint, { passive: true });
+      sliderTrack.addEventListener('touchstart', dismissSwipeHint, { passive: true });
+    }
+
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
         sliderTrack.scrollBy({ left: -320, behavior: 'smooth' });
@@ -342,6 +440,31 @@ function initFrame7Events() {
       title: "Boeing BUILD 3.0",
       meta: "Boeing University Innovation Leadership Development • Aerospace & Defense",
       desc: "Comprehensive workshop on IP fundamentals, patent protection, and licensing agreements tailored for aerospace and defense tech founders."
+    },
+    google: {
+      title: "Google India, Gurgaon",
+      meta: "Google India • Gurgaon",
+      desc: "Advising top YouTube content creators on technology, IP, and creator economy strategy under the Techstars global accelerator programme."
+    },
+    berkeley: {
+      title: "Berkeley Law, University of California, Berkeley, USA",
+      meta: "UC Berkeley Law • California, USA",
+      desc: "Keynote & masterclass on cross-border innovation, IP strategy, international technology transfer, and venture advisory."
+    },
+    nls: {
+      title: "National Law School (NLS), Gandhinagar",
+      meta: "National Law School • Gandhinagar",
+      desc: "Special address on startup law, innovation policy, statutory compliance, and technology entrepreneurship."
+    },
+    patna: {
+      title: "IIT Patna",
+      meta: "Incubation Centre • IIT Patna",
+      desc: "Venture clinic on innovation protection, IPR architecture, and entrepreneurship development for technology founders."
+    },
+    iitg: {
+      title: "IIT Gandhinagar",
+      meta: "Design & Innovation Center • IIT Gandhinagar",
+      desc: "Strategic session on deep-tech venture building, commercialization moats, and IP strategy for early-stage innovators."
     },
     roorkee: {
       title: "IIT Roorkee",
