@@ -143,7 +143,7 @@ function initFrame1Bell() {
     emailStep.classList.remove('hidden');
 
     if (previewQuestionText) {
-      previewQuestionText.textContent = `"${qText}"`;
+      previewQuestionText.textContent = qText;
     }
 
     if (emailInput) {
@@ -178,7 +178,7 @@ function initFrame1Bell() {
       const userQ = customQuestionInput ? customQuestionInput.value.trim() : '';
       const hiddenQInput = document.getElementById('web3formsQuestionInput');
       if (hiddenQInput) {
-        hiddenQInput.value = userQ || (previewQuestionText ? previewQuestionText.textContent.replace(/^"|"$/g, '') : '');
+        hiddenQInput.value = userQ || (previewQuestionText ? previewQuestionText.textContent : '');
       }
 
       const formData = new FormData(emailForm);
@@ -421,6 +421,37 @@ function initFrame7Events() {
         sliderTrack.scrollBy({ left: 320, behavior: 'smooth' });
       });
     }
+
+    // Events Progress Tally Sync
+    const eventsTallyMarks = document.querySelectorAll('#eventsProgress .tally-mark');
+    if (eventsTallyMarks.length) {
+      sliderTrack.addEventListener('scroll', () => {
+        const scrollLeft = sliderTrack.scrollLeft;
+        const maxScroll = sliderTrack.scrollWidth - sliderTrack.clientWidth;
+        if (maxScroll <= 0) return;
+        const progressRatio = scrollLeft / maxScroll;
+        const activeIndex = Math.min(
+          eventsTallyMarks.length - 1,
+          Math.max(0, Math.round(progressRatio * (eventsTallyMarks.length - 1)))
+        );
+
+        eventsTallyMarks.forEach((mark, i) => {
+          if (i === activeIndex) {
+            mark.classList.add('active');
+          } else {
+            mark.classList.remove('active');
+          }
+        });
+      }, { passive: true });
+
+      eventsTallyMarks.forEach((mark, i) => {
+        mark.addEventListener('click', () => {
+          const maxScroll = sliderTrack.scrollWidth - sliderTrack.clientWidth;
+          const targetScroll = (i / (eventsTallyMarks.length - 1)) * maxScroll;
+          sliderTrack.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        });
+      });
+    }
   }
 
   const eventCards = document.querySelectorAll('.event-card');
@@ -519,70 +550,8 @@ function initFrame7Events() {
 }
 
 /* ==========================================================================
-   7. FRAME 8: SCHEME MODALS
+   7. FRAME 8: REFERENCE WALL
    ========================================================================== */
 function initFrame8Offering() {
-  const schemeItems = document.querySelectorAll('.scheme-item');
-  const modal = document.getElementById('schemeModal');
-  const modalTitle = document.getElementById('schemeModalTitle');
-  const modalDesc = document.getElementById('schemeModalDesc');
-  const modalClose = document.getElementById('schemeModalClose');
-
-  const schemeData = {
-    sisfs: {
-      title: "Startup India Seed Fund Scheme (SISFS)",
-      desc: "Financial assistance to startups for proof of concept, prototype development, product trials, market entry, and commercialization with grants up to ₹20 Lakhs and convertible debentures up to ₹50 Lakhs.",
-      link: "https://seedfund.startupindia.gov.in"
-    },
-    gujarat: {
-      title: "Gujarat Startup & Innovation Scheme",
-      desc: "Sustained mentorship, IP filing assistance up to ₹3 Lakhs for national patents and ₹10 Lakhs for international patents, alongside monthly sustenance allowances for early-stage Gujarat founders.",
-      link: "https://startup.gujarat.gov.in"
-    },
-    msme: {
-      title: "MSME Innovative Scheme",
-      desc: "Comprehensive support encompassing Incubation, Design expertise, and Intellectual Property Rights (IPR) reimbursement for registered micro, small, and medium enterprises.",
-      link: "https://msme.gov.in"
-    },
-    dpiit: {
-      title: "DPIIT Patent Fee Rebate (80% Subsidy)",
-      desc: "Statutory 80% reduction in official patent filing fees and 50% rebate in trademark application fees for recognized Indian startups, paired with expedited examination workflows.",
-      link: "https://dpiit.gov.in"
-    },
-    samridh: {
-      title: "SAMRIDH Scheme for Software Startups",
-      desc: "MeitY scheme providing matching acceleration funding up to ₹40 Lakhs along with enterprise growth programs for tech startups with working products.",
-      link: "https://meitystartups.in"
-    },
-    nidhi: {
-      title: "NIDHI-Seed Support System (NIDHI-SSS)",
-      desc: "DST initiative providing seed support funding up to ₹100 Lakhs per venture through technology business incubators across premier engineering and research institutes.",
-      link: "https://nidhi-sss.dst.gov.in"
-    }
-  };
-
-  schemeItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      const schemeKey = item.getAttribute('data-scheme');
-      const info = schemeData[schemeKey];
-
-      if (info && modal) {
-        modalTitle.textContent = info.title;
-        modalDesc.textContent = info.desc;
-        const link = document.getElementById('schemeModalLink');
-        if (link) link.href = info.link;
-        modal.classList.remove('hidden');
-      }
-    });
-  });
-
-  if (modalClose) {
-    modalClose.addEventListener('click', () => modal.classList.add('hidden'));
-  }
-
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.add('hidden');
-    });
-  }
+  // Calm reference wall — static informational display
 }
