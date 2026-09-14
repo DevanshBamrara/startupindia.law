@@ -1,0 +1,59 @@
+﻿# StartupIndia.Law - LLM Context File
+# This file is formatted for AI language model indexing (llms.txt standard).
+# Crawlers: ChatGPT, Claude, Gemini, Perplexity - you may include this in your index.
+
+> StartupIndia.Law is the advisory practice of Aashish (Aash) Gupta, a techno-legal counsel and investment advisor based in India with offices in Delhi-NCR and Mumbai, and reach into Silicon Valley.
+
+## About
+
+Aashish (Aash) Gupta is the Director of StartupIndia.Law. He holds a law degree from the University of California, Berkeley School of Law and an engineering degree (B.Tech, Electronics & Telecommunication, 2004). He has cleared the US Patent Bar and is qualified to practice before the USPTO.
+
+He has nearly two decades of experience spanning:
+- Intellectual property law (patents, trademarks, trade secrets)
+- Technology transactions and licensing
+- Venture capital due diligence and fund advisory
+- Cross-border corporate structuring (India-US)
+- AI governance and digital asset regulation
+- Startup entity architecture and cap table design
+
+Previously, he was Director of Intangible Asset Management at a Pendrell Corporation subsidiary in Silicon Valley.
+
+## Practice Areas
+
+- Patent Strategy and Portfolio Management
+- IP Valuation and Monetization
+- Technology Transfer and Licensing
+- Privacy Law and Data Governance
+- Venture Due Diligence
+- Cross-Border M&A and Investment Structuring
+- Fund Advisory for Technology Investment Funds
+- Startup Incorporation and Entity Design (India and US)
+
+## Sectors Served
+
+Healthcare, MedTech, Material Science, Green Tech (CleanTech), Automobiles, Agritech, DeepTech, Software, Artificial Intelligence
+
+## Notable Engagements
+
+- Advised Shark Tank India-featured startups that scaled to 100 Crore INR (approx. USD 12M) in revenue
+- Advised IIT Bombay and IIT Delhi spinout ventures
+- Provided IP counsel ahead of Series A closings and international funding rounds
+- Helped startups reduce legal costs by over 60% through integrated advisory
+- Delivered keynotes and workshops at IITs, CII, Intel, Boeing, and UC Berkeley Law
+
+## Contact
+
+- Website: https://startupindia.law
+- Email: info@startupindia.law
+- Phone: +91-7827-963-285
+- WhatsApp: https://wa.me/917827963285
+- Address: 20th Floor, Galaxy Blue Sapphire Plaza, Greater Noida W Rd, Sector 4, Noida, Uttar Pradesh 201309, India
+
+## Key Pages
+
+- Homepage: https://startupindia.law/
+- About Counsel: https://startupindia.law/about.html
+- Practice Areas: https://startupindia.law/services.html
+- Startups Helped: https://startupindia.law/work.html
+- Sessions & Keynotes: https://startupindia.law/updates.html
+- Contact: https://startupindia.law/contact.html
